@@ -6,11 +6,6 @@ const Header = (props) => {
     <View
       style={{
         backgroundColor: '#333',
-        top: 0,
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        display: 'flex',
         paddingTop: Platform.OS === 'ios' ? 30 : 0,
       }}>
       <View

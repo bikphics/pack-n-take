@@ -6,46 +6,44 @@ import {Header, SettingTabsContainer} from '../components';
 
 const Country = (props) => {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <>
-        <Header
-          title="Country"
-          left={{
-            icon: (
-              <Ionicons name="chevron-back-outline" color={'#fff'} size={24} />
-            ),
-            onPress: () => {
-              props.navigation.goBack();
-            },
-          }}
-        />
-        <Screen>
-          <SettingTabsContainer
-            title="Choose Country"
-            icon={
-              <Ionicons
-                style={{marginHorizontal: 10}}
-                color="#333"
-                size={30}
-                name="flag-outline"
-              />
-            }>
-            <List.Item
-              onPress={() => {}}
-              style={{
-                backgroundColor: '#fff',
-                marginVertical: 1,
-                paddingVertical: 15,
-              }}
-              title="United Arab Emirates"
-              right={(props) => (
-                <Ionicons {...props} size={24} name="chevron-forward-outline" />
-              )}
+    <>
+      <Header
+        title="Country"
+        left={{
+          icon: (
+            <Ionicons name="chevron-back-outline" color={'#fff'} size={24} />
+          ),
+          onPress: () => {
+            props.navigation.goBack();
+          },
+        }}
+      />
+      <SafeAreaView style={{flex: 1}}>
+        <SettingTabsContainer
+          title="Choose Country"
+          icon={
+            <Ionicons
+              style={{marginHorizontal: 10}}
+              color="#333"
+              size={30}
+              name="flag-outline"
             />
-          </SettingTabsContainer>
-        </Screen>
-      </>
-    </SafeAreaView>
+          }>
+          <List.Item
+            onPress={() => {}}
+            style={{
+              backgroundColor: '#fff',
+              marginVertical: 1,
+              paddingVertical: 15,
+            }}
+            title="United Arab Emirates"
+            right={(props) => (
+              <Ionicons {...props} size={24} name="chevron-forward-outline" />
+            )}
+          />
+        </SettingTabsContainer>
+      </SafeAreaView>
+    </>
   );
 };
 

@@ -5,14 +5,13 @@ import {DISH_IMG} from '../assets';
 import {Header, ProductCard} from '../components';
 import {width} from '../config/Style';
 import StoreProductCard from '../components/PT/StoreProductCard';
-import Screen from '../components/PT/Screen';
 const Tab = createMaterialTopTabNavigator();
 
 const Browse = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <>
       <Header title="Browse" />
-      <Screen>
+      <SafeAreaView style={{flex: 1}}>
         <Tab.Navigator>
           <Tab.Screen
             name="Packs"
@@ -25,8 +24,8 @@ const Browse = () => {
             options={{title: 'Stores'}}
           />
         </Tab.Navigator>
-      </Screen>
-    </SafeAreaView>
+      </SafeAreaView>
+    </>
   );
 };
 

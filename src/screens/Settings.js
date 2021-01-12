@@ -3,27 +3,26 @@ import {View, ScrollView, SafeAreaView} from 'react-native';
 import {Header, SettingTabsContainer} from '../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {List, Searchbar, Switch} from 'react-native-paper';
-import Screen from '../components/PT/Screen';
 
 const Settings = (props) => {
   const [isAppSwitchOn, setIsAppSwitchOn] = React.useState(false);
   const [isEmailSwitchOn, setIsEmailSwitchOn] = React.useState(false);
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <>
-        <Header
-          title="Settings"
-          left={{
-            icon: (
-              <Ionicons name="chevron-back-outline" color={'#fff'} size={24} />
-            ),
-            onPress: () => {
-              props.navigation.goBack();
-            },
-          }}
-        />
-        <Screen style={{padding: 10}}>
+    <>
+      <Header
+        title="Settings"
+        left={{
+          icon: (
+            <Ionicons name="chevron-back-outline" color={'#fff'} size={24} />
+          ),
+          onPress: () => {
+            props.navigation.goBack();
+          },
+        }}
+      />
+      <SafeAreaView style={{flex: 1}}>
+        <View style={{flex: 1, padding: 10}}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <SettingTabsContainer title="Settings">
               <List.Item
@@ -144,9 +143,9 @@ const Settings = (props) => {
               />
             </SettingTabsContainer>
           </ScrollView>
-        </Screen>
-      </>
-    </SafeAreaView>
+        </View>
+      </SafeAreaView>
+    </>
   );
 };
 
