@@ -19,7 +19,10 @@ const Router = () => {
       logoHeight={150}
       logoWidth={150}>
       <NavigationContainer>
-        <StatusBar backgroundColor={PT_COLORS.secondaryBlack} />
+        <StatusBar
+          backgroundColor={PT_COLORS.secondaryBlack}
+          barStyle="light-content"
+        />
         {user ? <PrivateRoute /> : <PublicRoute />}
       </NavigationContainer>
     </AnimatedSplash>

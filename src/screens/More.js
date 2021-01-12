@@ -1,9 +1,10 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, View, SafeAreaView} from 'react-native';
 import {List} from 'react-native-paper';
 import {Header} from '../components';
 import {useAppContext} from '../config/AppContext';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Screen from '../components/PT/Screen';
 const More = (props) => {
   const {logout, handelExit} = useAppContext();
 
@@ -16,9 +17,9 @@ const More = (props) => {
   }
 
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <Header title="More" />
-      <View style={{flex: 1, paddingVertical: 10}}>
+      <Screen style={{paddingVertical: 10}}>
         <ScrollView>
           <List.Item
             onPress={() => props.navigation.navigate('Settings')}
@@ -137,8 +138,8 @@ const More = (props) => {
             )}
           />
         </ScrollView>
-      </View>
-    </>
+      </Screen>
+    </SafeAreaView>
   );
 };
 

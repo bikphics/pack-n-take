@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Title, Button, Appbar} from 'react-native-paper';
 import {DISH_IMG} from '../assets';
@@ -8,13 +8,13 @@ import {PT_COLORS} from '../config';
 
 const Discover = (props) => {
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <Header title="Khalidya, Abu Dhabi" />
       {/* <Appbar
   >
         <Appbar.Content title="Khalidya, Abu Dhabi" subtitle={'With in 3km'} />
       </Appbar> */}
-      <View style={{flex: 1, paddingHorizontal: 10}}>
+      <View style={{flex: 1, paddingHorizontal: 10, marginTop: 40}}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View
             style={{
@@ -82,7 +82,7 @@ const Discover = (props) => {
           </ScrollView>
         </ScrollView>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 
