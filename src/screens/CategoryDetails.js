@@ -20,15 +20,20 @@ const CategoryDetails = (props) => {
           },
         }}
       />
-      <View style={{flex: 1, paddingHorizontal: 10}}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <ProductCard cardStyle={{width: width - 30}} productImg={DISH_IMG} />
-          <ProductCard cardStyle={{width: width - 30}} />
-          <ProductCard cardStyle={{width: width - 30}} />
-          <ProductCard cardStyle={{width: width - 30}} />
-          <ProductCard cardStyle={{width: width - 30}} />
-        </ScrollView>
-      </View>
+      <SafeAreaView>
+        <View style={{flex: 1, paddingHorizontal: 10}}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <ProductCard
+              cardStyle={{width: width - 30}}
+              productImg={DISH_IMG}
+            />
+            <ProductCard cardStyle={{width: width - 30}} />
+            <ProductCard cardStyle={{width: width - 30}} />
+            <ProductCard cardStyle={{width: width - 30}} />
+            <ProductCard cardStyle={{width: width - 30}} />
+          </ScrollView>
+        </View>
+      </SafeAreaView>
     </>
   );
 };

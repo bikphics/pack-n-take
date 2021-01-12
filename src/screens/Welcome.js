@@ -1,66 +1,68 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, SafeAreaView} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {PTButton} from '../components';
 
 const Welcome = (props) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.signUpHeadeing}>Pack & Take</Text>
-      <View style={styles.imgContainer}>
-        <Image
-          source={{
-            uri:
-              'https://images.pexels.com/photos/6101716/pexels-photo-6101716.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-            cache: 'only-if-cached',
-          }}
-          style={styles.img}
-        />
-      </View>
-      <View style={styles.formContainer}>
-        <View style={styles.formWrap}>
-          <Text style={styles.subHeading}>
-            Save Delicious Food and Fight Food Waste
-          </Text>
-          <PTButton
-            style={styles.signupBtn}
-            onPress={() => {
-              props.navigation.navigate('SignIn');
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+        <Text style={styles.signUpHeadeing}>Pack & Take</Text>
+        <View style={styles.imgContainer}>
+          <Image
+            source={{
+              uri:
+                'https://images.pexels.com/photos/6101716/pexels-photo-6101716.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+              // cache: 'only-if-cached',
             }}
-            title="Sign In"
-            buttonBackgroundColor="#333"
-            buttonTextColor="#fff"
-          />
-          <PTButton
-            style={styles.signupBtn}
-            onPress={() => {
-              console.log('Pressed Apple');
-            }}
-            title="Continue With Apple"
-            buttonBackgroundColor="#000"
-            buttonTextColor="#fff"
-          />
-          <PTButton
-            style={styles.signupBtn}
-            onPress={() => {
-              console.log('Pressed Facebook');
-            }}
-            title="Continue With Facebook"
-            buttonBackgroundColor="#4267B2"
-            buttonTextColor="#fff"
+            style={styles.img}
           />
         </View>
+        <View style={styles.formContainer}>
+          <View style={styles.formWrap}>
+            <Text style={styles.subHeading}>
+              Save Delicious Food and Fight Food Waste
+            </Text>
+            <PTButton
+              style={styles.signupBtn}
+              onPress={() => {
+                props.navigation.navigate('SignIn');
+              }}
+              title="Sign In"
+              buttonBackgroundColor="#333"
+              buttonTextColor="#fff"
+            />
+            <PTButton
+              style={styles.signupBtn}
+              onPress={() => {
+                console.log('Pressed Apple');
+              }}
+              title="Continue With Apple"
+              buttonBackgroundColor="#000"
+              buttonTextColor="#fff"
+            />
+            <PTButton
+              style={styles.signupBtn}
+              onPress={() => {
+                console.log('Pressed Facebook');
+              }}
+              title="Continue With Facebook"
+              buttonBackgroundColor="#4267B2"
+              buttonTextColor="#fff"
+            />
+          </View>
+        </View>
+        <View style={styles.footerContainer}>
+          <Text>Don't have an account</Text>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('SignUp');
+            }}>
+            <Text>Sign up</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.footerContainer}>
-        <Text>Don't have an account</Text>
-        <TouchableOpacity
-          onPress={() => {
-            props.navigation.navigate('SignUp');
-          }}>
-          <Text>Sign up</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

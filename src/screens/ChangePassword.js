@@ -19,46 +19,48 @@ const ChangePassword = (props) => {
           },
         }}
       />
-      <ScrollView style={{padding: 14}}>
-        <Card>
-          <Card.Title
-            title="Change Password"
-            left={(props) => (
-              <Ionicons
-                name="key-outline"
-                color={PT_COLORS.secondaryDark}
-                {...props}
+      <SafeAreaView style={{flex: 1}}>
+        <ScrollView style={{padding: 14}}>
+          <Card>
+            <Card.Title
+              title="Change Password"
+              left={(props) => (
+                <Ionicons
+                  name="key-outline"
+                  color={PT_COLORS.secondaryDark}
+                  {...props}
+                />
+              )}
+            />
+            <Card.Content>
+              <PTTextInput
+                labelWrapperStyle={{backgroundColor: '#fff'}}
+                style={{marginVertical: 10}}
+                label="Current Password"
               />
-            )}
-          />
-          <Card.Content>
-            <PTTextInput
-              labelWrapperStyle={{backgroundColor: '#fff'}}
-              style={{marginVertical: 10}}
-              label="Current Password"
-            />
-            <PTTextInput
-              labelWrapperStyle={{backgroundColor: '#fff'}}
-              style={{marginVertical: 10}}
-              label="New Password"
-            />
-            <PTTextInput
-              labelWrapperStyle={{backgroundColor: '#fff'}}
-              style={{marginVertical: 10}}
-              label="Verify Password"
-            />
-          </Card.Content>
-          <Card.Actions>
-            <Button
-              onPress={() => {}}
-              mode="contained"
-              style={{marginVertical: 10, width: '100%'}}
-              color={PT_COLORS.secondaryDark}>
-              Save Changes
-            </Button>
-          </Card.Actions>
-        </Card>
-      </ScrollView>
+              <PTTextInput
+                labelWrapperStyle={{backgroundColor: '#fff'}}
+                style={{marginVertical: 10}}
+                label="New Password"
+              />
+              <PTTextInput
+                labelWrapperStyle={{backgroundColor: '#fff'}}
+                style={{marginVertical: 10}}
+                label="Verify Password"
+              />
+            </Card.Content>
+            <Card.Actions>
+              <Button
+                onPress={() => {}}
+                mode="contained"
+                style={{marginVertical: 10, width: '100%'}}
+                color={PT_COLORS.secondaryDark}>
+                Save Changes
+              </Button>
+            </Card.Actions>
+          </Card>
+        </ScrollView>
+      </SafeAreaView>
     </>
   );
 };
