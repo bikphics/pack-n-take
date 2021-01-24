@@ -19,7 +19,7 @@ const StoreProductCard = ({productImg, cardStyle, corner}) => {
     <TouchableOpacity style={{...styles.cardStyle, ...cardStyle}}>
       <ImageBackground source={productImg || WELCOME_IMG} style={styles.image}>
         <View
-          style={{width: '100%', height: 300, backgroundColor: '#00000070'}}>
+          style={{width: '100%', height: 370, backgroundColor: '#00000070'}}>
           <View
             style={{
               flex: 1,
@@ -31,11 +31,11 @@ const StoreProductCard = ({productImg, cardStyle, corner}) => {
           <View
             style={{
               width: '100%',
-              height: '50%',
+              height: '42%',
               backgroundColor: '#ddd',
               padding: 5,
-              borderTopLeftRadius: 30,
-              borderTopRightRadius: 30,
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
               position: 'relative',
             }}>
             <View
@@ -44,7 +44,7 @@ const StoreProductCard = ({productImg, cardStyle, corner}) => {
                 padding: 8,
                 borderRadius: 20,
                 position: 'absolute',
-                top: -15,
+                top: -18,
                 left: 14,
               }}>
               <AntDesign name="hearto" color={'#ddd'} size={20} />
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     overflow: 'hidden',
     margin: 5,
-    width: width - 60,
+    width: width - 50,
     alignSelf: 'center',
     shadowColor: '#000',
     shadowOffset: {

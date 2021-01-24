@@ -39,15 +39,16 @@ const Orders = (props) => {
 
 export default Orders;
 
-function ProductCards() {
+function ProductCards(props) {
   return (
     <View style={{flex: 1, padding: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
+        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
+        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
+        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
+        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
+        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
+
       </ScrollView>
     </View>
   );

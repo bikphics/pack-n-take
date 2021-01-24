@@ -1,11 +1,13 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import {LOGO, RIGHT_ARROW} from '../../assets';
 import Badge from './Badge';
 
-const OrderCard = () => {
+const OrderCard = ({onPress}) => {
   return (
-    <View style={styles.container}>
+
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.imgWrapper}>
         <Image style={{width: 35, height: 35}} source={LOGO} />
       </View>
@@ -28,7 +30,7 @@ const OrderCard = () => {
       <View style={styles.arrowWrapper}>
         <Image style={{width: 15, height: 15}} source={RIGHT_ARROW} />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

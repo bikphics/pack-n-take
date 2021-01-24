@@ -11,12 +11,12 @@ const Favorites = () => {
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1, paddingHorizontal: 10}}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <ProductCard cardStyle={{width: width - 30}} />
+            <ProductCard cardStyle={{width: width - 20}} />
             <ProductCard
-              cardStyle={{width: width - 30}}
+              cardStyle={{width: width - 20}}
               productImg={DISH_IMG}
             />
-            <ProductCard cardStyle={{width: width - 30}} />
+            <ProductCard cardStyle={{width: width - 20}} />
           </ScrollView>
         </View>
       </SafeAreaView>

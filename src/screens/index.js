@@ -13,6 +13,10 @@ import Country from './Country';
 import Orders from './Orders';
 import Settings from './Settings';
 import CategoryDetails from './CategoryDetails';
+import ProductDetails from './ProductDetails';
+import PaymentMethods from './PaymentMethods';
+import PreveiousOrderDetails from './PreveiousOrderDetails';
+import PaymentCardDetails from './PaymentCardDetails';
 export {
   Welcome,
   ForgetPassword,
@@ -29,4 +33,8 @@ export {
   Country,
   Orders,
   CategoryDetails,
+  ProductDetails,
+  PaymentMethods,
+  PreveiousOrderDetails,
+  PaymentCardDetails
 };

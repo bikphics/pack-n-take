@@ -35,9 +35,9 @@ function ProductCards() {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ProductCard cardStyle={{width: width - 30}} />
-        <ProductCard cardStyle={{width: width - 30}} productImg={DISH_IMG} />
-        <ProductCard cardStyle={{width: width - 30}} />
+        <ProductCard cardStyle={{width: width - 20}} />
+        <ProductCard cardStyle={{width: width - 20}} productImg={DISH_IMG} />
+        <ProductCard cardStyle={{width: width - 20}} />
       </ScrollView>
     </View>
   );
@@ -46,12 +46,13 @@ function StoreProductCards() {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <StoreProductCard cardStyle={{width: width - 30}} />
+        <StoreProductCard cardStyle={{width: width - 20}} corner />
         <StoreProductCard
-          cardStyle={{width: width - 30}}
+          cardStyle={{width: width - 20}}
           productImg={DISH_IMG}
+          corner
         />
-        <StoreProductCard cardStyle={{width: width - 30}} />
+        <StoreProductCard cardStyle={{width: width - 20}} corner />
       </ScrollView>
     </View>
   );

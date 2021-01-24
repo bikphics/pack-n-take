@@ -52,10 +52,12 @@ const More = (props) => {
               )}
             />
             <List.Item
+            onPress={() => props.navigation.navigate('PaymentMethods')}
               style={{
                 backgroundColor: '#fff',
                 marginVertical: 1,
                 paddingVertical: 15,
+
               }}
               title="Payment Methods"
               left={(props) => (

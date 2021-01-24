@@ -1,11 +1,13 @@
 import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
+import { width } from '../../config/Style';
 
-const PTButton = ({onPress, title, buttonBackgroundColor, buttonTextColor}) => {
+const PTButton = ({onPress, title, buttonBackgroundColor, buttonTextColor, width}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View
         style={{
+          width: width,
           backgroundColor: buttonBackgroundColor,
           paddingVertical: 15,
           paddingHorizontal: 20,

@@ -8,6 +8,9 @@ import {
   Language,
   Country,
   Orders,
+  PaymentMethods,
+  PreveiousOrderDetails,
+  PaymentCardDetails,
 } from '../screens';
 const Stack = createStackNavigator();
 const MoreStack = () => {
@@ -23,6 +26,9 @@ const MoreStack = () => {
       <Stack.Screen name="EditProfile" component={EditProfile} />
       <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="Country" component={Country} />
+      <Stack.Screen name="PaymentMethods" component={PaymentMethods} />
+      <Stack.Screen name="PreveiousOrderDetails" component={PreveiousOrderDetails} />
+      <Stack.Screen name="PaymentCardDetails" component={PaymentCardDetails} />
     </Stack.Navigator>
   );
 };
