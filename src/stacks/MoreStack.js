@@ -20,15 +20,6 @@ const MoreStack = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="More" component={More} />
-      <Stack.Screen name="Settings" component={Settings} />
-      <Stack.Screen name="Orders" component={Orders} />
-      <Stack.Screen name="ChangePassword" component={ChangePassword} />
-      <Stack.Screen name="EditProfile" component={EditProfile} />
-      <Stack.Screen name="Language" component={Language} />
-      <Stack.Screen name="Country" component={Country} />
-      <Stack.Screen name="PaymentMethods" component={PaymentMethods} />
-      <Stack.Screen name="PreveiousOrderDetails" component={PreveiousOrderDetails} />
-      <Stack.Screen name="PaymentCardDetails" component={PaymentCardDetails} />
     </Stack.Navigator>
   );
 };

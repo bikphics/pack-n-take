@@ -13,9 +13,6 @@ const DiscoverStack = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="Discover" component={Discover} />
-      <Stack.Screen name="CategoryDetails" component={CategoryDetails} />
-      <Stack.Screen name="ProductDetails" component={ProductDetails} />
-      <Stack.Screen name="OrderBooking" component={OrderBooking} />
     </Stack.Navigator>
   );
 };

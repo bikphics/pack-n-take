@@ -50,7 +50,7 @@ const OrderBooking = (props) => {
             <View
               style={{
                 width: '100%',
-                height: '98%',
+                height: '88%',
                 backgroundColor: '#fff',
                 padding: 5,
                 borderTopLeftRadius: 20,

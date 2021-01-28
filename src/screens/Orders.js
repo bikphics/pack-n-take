@@ -22,12 +22,9 @@ const Orders = (props) => {
       <SafeAreaView style={{flex: 1}}>
         <Tab.Navigator
           tabBarOptions={{
-            activeTintColor: '#fff',
-            inactiveTintColor: '#333',
             indicatorStyle: {
-              height: null,
-              top: 0,
-              backgroundColor: '#222',
+              borderBottomWidth: 3,
+              borderBottomColor: '#333',
             },
           }}>
           <Tab.Screen
