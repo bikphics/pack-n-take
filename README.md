@@ -22,3 +22,7 @@
 
 - `cd android && gradlew assembleRelease`
 - `cd android && gradlew bundleRelease`
+
+## Change Package Name
+
+- `npx react-native-rename "MyApp" -b com.mycompany.myapp`

@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'rnStater' do
+target 'PackNTake' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'rnStaterTests' do
+  target 'PackNTakeTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -23,10 +23,10 @@ target 'rnStater' do
   end
 end
 
-target 'rnStater-tvOS' do
-  # Pods for rnStater-tvOS
+target 'PackNTake-tvOS' do
+  # Pods for PackNTake-tvOS
 
-  target 'rnStater-tvOSTests' do
+  target 'PackNTake-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
