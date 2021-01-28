@@ -1,64 +1,88 @@
 import React from 'react';
-import {TouchableOpacity, Text, View, Platform} from 'react-native';
+import {TouchableOpacity, Text, View, Platform, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const Header = (props) => {
   return (
-    <View
-      style={{
-        backgroundColor: '#333',
-        paddingTop: Platform.OS === 'ios' ? 30 : 0,
-      }}>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          paddingVertical: 10,
-          marginTop: 1,
-          backgroundColor: '#333',
-        }}>
+    <View style={styles.headerContainerWrap}>
+      <View style={styles.headerContainer}>
         <TouchableOpacity
-          onPress={() => {
-            props.left && props.left.onPress();
-          }}
-          style={{alignSelf: 'center', marginLeft: 10}}>
+          onPress={() => props.left && props.left.onPress()}
+          style={styles.headerLeft}>
           {props.left && props.left.icon}
         </TouchableOpacity>
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <View
-            style={{
-              alignSelf: 'center',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'row',
-            }}>
-            <Ionicons name="location-outline" color="#fff" size={16} />
-            <Text
-              style={{
-                textAlign: 'center',
-                fontWeight: 'bold',
-                color: '#fff',
-                fontSize: 18,
-                marginHorizontal: 5,
-              }}>
-              {props.title}
-            </Text>
-            <Ionicons name="chevron-down-outline" color="#fff" size={16} />
+        <View style={styles.headerContentWrap}>
+          <View style={styles.headerContent}>
+            {!props.hideIcons && (
+              <Ionicons name="location-outline" color="#fff" size={16} />
+            )}
+            <Text style={styles.headerTitle}>{props.title}</Text>
+            {!props.hideIcons && (
+              <Ionicons name="chevron-down-outline" color="#fff" size={16} />
+            )}
           </View>
-          <View style={{alignSelf: 'center'}}>
-            <Text
-              style={{
-                textAlign: 'center',
-                fontWeight: 'bold',
-                color: '#fff',
-                fontSize: 12,
-              }}>
-              With In 3 Km
-            </Text>
+          <View style={styles.locationRangeWrap}>
+            {!props.hideLocationRange && (
+              <Text style={styles.locationRange}>With In 3 Km</Text>
+            )}
           </View>
         </View>
+        <TouchableOpacity
+          onPress={() => props.right && props.right.onPress()}
+          style={styles.headerRight}>
+          {props.right && props.right.icon}
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
 export default Header;
+const styles = StyleSheet.create({
+  headerContainerWrap: {
+    backgroundColor: '#333',
+    paddingTop: Platform.OS === 'ios' ? 30 : 0,
+  },
+  headerLeft: {
+    alignSelf: 'center',
+    marginLeft: 10,
+  },
+  headerRight: {
+    alignSelf: 'center',
+    marginRight: 10,
+  },
+  headerContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    marginTop: 1,
+    backgroundColor: '#333',
+  },
+  headerContentWrap: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerContent: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  locationRange: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#fff',
+    fontSize: 12,
+  },
+  locationRangeWrap: {
+    alignSelf: 'center',
+  },
+  headerTitle: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#fff',
+    fontSize: 18,
+    marginHorizontal: 5,
+  },
+});

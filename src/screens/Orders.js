@@ -20,7 +20,16 @@ const Orders = (props) => {
         }}
       />
       <SafeAreaView style={{flex: 1}}>
-        <Tab.Navigator>
+        <Tab.Navigator
+          tabBarOptions={{
+            activeTintColor: '#fff',
+            inactiveTintColor: '#333',
+            indicatorStyle: {
+              height: null,
+              top: 0,
+              backgroundColor: '#222',
+            },
+          }}>
           <Tab.Screen
             name="Current"
             component={ProductCards}
@@ -43,12 +52,21 @@ function ProductCards(props) {
   return (
     <View style={{flex: 1, padding: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
-        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
-        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
-        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
-        <OrderCard onPress={()=>props.navigation.push('PreveiousOrderDetails', 'More')} />
-
+        <OrderCard
+          onPress={() => props.navigation.push('PreveiousOrderDetails', 'More')}
+        />
+        <OrderCard
+          onPress={() => props.navigation.push('PreveiousOrderDetails', 'More')}
+        />
+        <OrderCard
+          onPress={() => props.navigation.push('PreveiousOrderDetails', 'More')}
+        />
+        <OrderCard
+          onPress={() => props.navigation.push('PreveiousOrderDetails', 'More')}
+        />
+        <OrderCard
+          onPress={() => props.navigation.push('PreveiousOrderDetails', 'More')}
+        />
       </ScrollView>
     </View>
   );

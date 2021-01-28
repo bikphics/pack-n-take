@@ -18,17 +18,10 @@ const SettingTabsContainer = (props) => {
           backgroundColor: '#fff',
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
-          paddingVertical: 10,
+          paddingVertical: 20,
+          paddingHorizontal: 10,
         }}>
-        {props.icon || (
-          <Ionicons
-            style={{marginHorizontal: 10}}
-            color="#333"
-            size={30}
-            name="settings-outline"
-          />
-        )}
-        <Text>{props.title}</Text>
+        <Text style={{fontSize: 18, marginLeft: 10}}>{props.title}</Text>
       </View>
       {props.children}
     </View>

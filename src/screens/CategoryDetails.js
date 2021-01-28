@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {SafeAreaView, ScrollView, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {DISH_IMG} from '../assets';
 import {Header, ProductCard} from '../components';

@@ -22,20 +22,13 @@ const EditProfile = (props) => {
             props.navigation.goBack();
           },
         }}
+        hideIcons
+        hideLocationRange
       />
       <SafeAreaView style={{flex: 1}}>
         <ScrollView style={{padding: 14}}>
           <Card>
-            <Card.Title
-              title="Edit Profile"
-              left={(props) => (
-                <Ionicons
-                  name="person-add-outline"
-                  color={PT_COLORS.secondaryDark}
-                  {...props}
-                />
-              )}
-            />
+            <Card.Title title="Edit Profile" />
             <Card.Content>
               <PTTextInput
                 labelWrapperStyle={{backgroundColor: '#fff'}}

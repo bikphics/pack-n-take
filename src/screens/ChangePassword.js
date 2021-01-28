@@ -4,6 +4,7 @@ import {Button, Card} from 'react-native-paper';
 import {ScrollView} from 'react-native-gesture-handler';
 import {PT_COLORS} from '../config';
 import {Header, PTTextInput} from '../components';
+import {SafeAreaView} from 'react-native';
 
 const ChangePassword = (props) => {
   return (

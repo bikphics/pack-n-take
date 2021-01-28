@@ -20,6 +20,8 @@ const Settings = (props) => {
             props.navigation.goBack();
           },
         }}
+        hideIcons
+        hideLocationRange
       />
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1, padding: 10}}>
@@ -38,6 +40,7 @@ const Settings = (props) => {
                     {...props}
                     size={24}
                     name="chevron-forward-outline"
+                    style={{marginTop: 4}}
                   />
                 )}
               />
@@ -54,6 +57,7 @@ const Settings = (props) => {
                     {...props}
                     size={24}
                     name="chevron-forward-outline"
+                    style={{marginTop: 4}}
                   />
                 )}
               />
@@ -80,6 +84,7 @@ const Settings = (props) => {
                   <Switch
                     value={isAppSwitchOn}
                     onValueChange={() => setIsAppSwitchOn(!isAppSwitchOn)}
+                    style={{marginTop: 4}}
                   />
                 )}
               />
@@ -122,6 +127,7 @@ const Settings = (props) => {
                     {...props}
                     size={24}
                     name="chevron-forward-outline"
+                    style={{marginTop: 4}}
                   />
                 )}
               />
@@ -138,6 +144,7 @@ const Settings = (props) => {
                     {...props}
                     size={24}
                     name="chevron-forward-outline"
+                    style={{marginTop: 4}}
                   />
                 )}
               />

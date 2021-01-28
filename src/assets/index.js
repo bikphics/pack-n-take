@@ -15,4 +15,23 @@ const MASTERCARD = require('./master-card.png');
 const VISA = require('./visa.png');
 const APPLE_PAY = require('./apple-pay.png');
 const CASH_ON_DELIVERY = require('./cod.png');
-export {WELCOME_IMG, LOGO, DISH_IMG, HEART_IMG, SETTINGS_IMG, RIGHT_ARROW, APPLE_PAY, MASTERCARD, VISA, CASH_ON_DELIVERY};
+const SHOP = require('./order/shop.png');
+const EDIT = require('./order/edit.png');
+const BAG = require('./order/bag.png');
+const MAP = require('./map.png');
+export {
+  WELCOME_IMG,
+  LOGO,
+  DISH_IMG,
+  HEART_IMG,
+  SETTINGS_IMG,
+  RIGHT_ARROW,
+  APPLE_PAY,
+  MASTERCARD,
+  VISA,
+  CASH_ON_DELIVERY,
+  SHOP,
+  EDIT,
+  MAP,
+  BAG,
+};
