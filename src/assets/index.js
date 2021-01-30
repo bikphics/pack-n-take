@@ -19,6 +19,7 @@ const SHOP = require('./order/shop.png');
 const EDIT = require('./order/edit.png');
 const BAG = require('./order/bag.png');
 const MAP = require('./map.png');
+const PENDING = require('./pending.png');
 export {
   WELCOME_IMG,
   LOGO,
@@ -34,4 +35,5 @@ export {
   EDIT,
   MAP,
   BAG,
+  PENDING,
 };
