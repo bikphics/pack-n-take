@@ -58,7 +58,13 @@ const ProductDetails = (props) => {
         animationType={'slide'}
         transparent={true}
         visible={isModalVisible}>
-        <View style={{flex: 1, justifyContent: 'flex-end'}}>
+        <View
+          onPress={modalClose}
+          style={{
+            flex: 1,
+            justifyContent: 'flex-end',
+            backgroundColor: '#3333339e',
+          }}>
           <View
             style={{
               width: '100%',

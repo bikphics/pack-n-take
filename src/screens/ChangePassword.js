@@ -19,6 +19,8 @@ const ChangePassword = (props) => {
             props.navigation.goBack();
           },
         }}
+        hideIcons
+        hideLocationRange
       />
       <SafeAreaView style={{flex: 1}}>
         <ScrollView style={{padding: 14}}>

@@ -4,7 +4,7 @@ import {Header} from '../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {LOGO, WELCOME_IMG} from '../assets';
 import {width} from '../config/Style';
-const PaymentCardDetails = () => {
+const PaymentCardDetails = (props) => {
   return (
     <>
       <Header

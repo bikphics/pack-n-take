@@ -12,7 +12,13 @@ const Browse = () => {
     <>
       <Header title="Browse" />
       <SafeAreaView style={{flex: 1}}>
-        <Tab.Navigator>
+        <Tab.Navigator
+          tabBarOptions={{
+            indicatorStyle: {
+              borderBottomWidth: 3,
+              borderBottomColor: '#333',
+            },
+          }}>
           <Tab.Screen
             name="Packs"
             component={ProductCards}
