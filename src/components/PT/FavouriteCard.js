@@ -10,7 +10,7 @@ import {
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {LOGO, WELCOME_IMG} from '../../assets';
 import {width} from '../../config/Style';
-const ProductCard = ({productImg, cardStyle, corner, onPress}) => {
+const FavouriteCard = ({productImg, cardStyle, corner, onPress}) => {
   const logoStyle = corner
     ? {justifyContent: 'flex-start', alignItems: 'flex-start', padding: 10}
     : {justifyContent: 'center', alignItems: 'center'};
@@ -109,19 +109,52 @@ const ProductCard = ({productImg, cardStyle, corner, onPress}) => {
                   Collect directly-250m
                 </Text>
               </View>
-              <View style={{flex: 2, justifyContent: 'flex-start'}}>
+              <View style={{flex: 2, justifyContent: 'center'}}>
                 <View
                   style={{
                     backgroundColor: '#444',
                     justifyContent: 'center',
                     flexDirection: 'row',
-                    marginTop: 25,
+                    alignSelf: 'center',
+                    marginTop: 8,
                     paddingHorizontal: 10,
                     paddingVertical: 5,
                     borderRadius: 5,
-                    alignSelf: 'center',
                   }}>
                   <Text style={{color: '#ddd', fontSize: 10}}>5+ Left</Text>
+                </View>
+                <View
+                  style={{
+                    backgroundColor: '#394047',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    alignSelf: 'center',
+                    marginTop: 15,
+                    paddingHorizontal: 10,
+                    paddingVertical: 5,
+                    borderRadius: 5,
+                  }}>
+                  <View>
+                    <Text
+                      style={{
+                        color: '#ddd',
+                        textAlign: 'center',
+                        fontSize: 12,
+                      }}>
+                      AED 40.00
+                    </Text>
+                  </View>
+                  <View>
+                    <Text
+                      style={{
+                        color: '#ddd',
+                        fontSize: 16,
+                        marginTop: 10,
+                        textAlign: 'center',
+                      }}>
+                      AED 20.00
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -132,7 +165,7 @@ const ProductCard = ({productImg, cardStyle, corner, onPress}) => {
   );
 };
 
-export default ProductCard;
+export default FavouriteCard;
 
 const styles = StyleSheet.create({
   image: {
@@ -145,9 +178,8 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     overflow: 'hidden',
     margin: 0,
-    width: width - 80,
+    width: width - 40,
     alignSelf: 'center',
-    marginRight: 25,
-    marginLeft: 5,
+    marginTop: 15,
   },
 });

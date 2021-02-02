@@ -20,6 +20,14 @@ const EDIT = require('./order/edit.png');
 const BAG = require('./order/bag.png');
 const MAP = require('./map.png');
 const PENDING = require('./pending.png');
+const SETTINGS = require('./light-icons/setting.png');
+const ORDER = require('./light-icons/orders.png');
+const PAYMENT_DETAILS = require('./light-icons/payment-details.png');
+const PRIVACY_POLICY = require('./light-icons/privacy-policy.png');
+const TERMS_CONDITIONS = require('./light-icons/terms-condition.png');
+const HELP = require('./light-icons/help.png');
+const STAR = require('./light-icons/star.png');
+const SUCCESS = require('./light-icons/success.png');
 export {
   WELCOME_IMG,
   LOGO,
@@ -36,4 +44,12 @@ export {
   MAP,
   BAG,
   PENDING,
+  SETTINGS,
+  ORDER,
+  PAYMENT_DETAILS,
+  PRIVACY_POLICY,
+  TERMS_CONDITIONS,
+  HELP,
+  STAR,
+  SUCCESS,
 };

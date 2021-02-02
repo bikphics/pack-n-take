@@ -20,6 +20,8 @@ import {
   Settings,
 } from './screens';
 import OrderBooking from './screens/OrderBooking';
+import ProductDetailed from './screens/ProductDetailed';
+import PastOrderReviewDetails from './screens/PastOrderReviewDetail';
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -32,6 +34,7 @@ const PrivateRoute = () => {
       <Stack.Screen name="MainApp" component={MYTabs} />
       <Stack.Screen name="CategoryDetails" component={CategoryDetails} />
       <Stack.Screen name="ProductDetails" component={ProductDetails} />
+      <Stack.Screen name="ProductDetailed" component={ProductDetailed} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="Orders" component={Orders} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
@@ -40,6 +43,10 @@ const PrivateRoute = () => {
       <Stack.Screen name="Country" component={Country} />
       <Stack.Screen name="PaymentMethods" component={PaymentMethods} />
       <Stack.Screen name="OrderBooking" component={OrderBooking} />
+      <Stack.Screen
+        name="PastOrderReviewDetail"
+        component={PastOrderReviewDetails}
+      />
       <Stack.Screen
         name="PreveiousOrderDetails"
         component={PreveiousOrderDetails}

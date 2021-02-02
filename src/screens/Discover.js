@@ -15,7 +15,7 @@ const Discover = (props) => {
         <Appbar.Content title="Khalidya, Abu Dhabi" subtitle={'With in 3km'} />
       </Appbar> */}
       <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 1, paddingHorizontal: 10, marginTop: 20}}>
+        <View style={{flex: 1, paddingHorizontal: 3, marginTop: 10}}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <View
               style={{
@@ -35,7 +35,12 @@ const Discover = (props) => {
               </Button>
             </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              <ProductCard corner onPress={() => props.navigation.push('ProductDetails', 'Product Details')} />
+              <ProductCard
+                corner
+                onPress={() =>
+                  props.navigation.push('ProductDetails', 'Product Details')
+                }
+              />
               <ProductCard corner />
               <ProductCard corner />
             </ScrollView>

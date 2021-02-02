@@ -51,7 +51,7 @@ const EditProfile = (props) => {
                 onPress={() => {}}
                 mode="contained"
                 style={{marginVertical: 10, width: '100%'}}
-                color={PT_COLORS.secondaryDark}>
+                color="#394047">
                 Save Changes
               </Button>
             </Card.Actions>

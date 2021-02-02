@@ -1,9 +1,17 @@
 import React from 'react';
-import {ScrollView, View, SafeAreaView} from 'react-native';
+import {ScrollView, View, SafeAreaView, Image} from 'react-native';
 import {List} from 'react-native-paper';
 import {Header} from '../components';
 import {useAppContext} from '../config/AppContext';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {
+  HELP,
+  SETTINGS,
+  PAYMENT_DETAILS,
+  PRIVACY_POLICY,
+  TERMS_CONDITIONS,
+  ORDER,
+} from '../assets';
 const More = (props) => {
   const {logout, handelExit} = useAppContext();
 
@@ -17,7 +25,7 @@ const More = (props) => {
 
   return (
     <>
-      <Header title="More" />
+      <Header title="More" hideIcons hideLocationRange />
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1, paddingVertical: 10}}>
           <ScrollView>
@@ -30,7 +38,7 @@ const More = (props) => {
               }}
               title="Settings"
               left={(props) => (
-                <Ionicons {...props} size={30} name="settings-outline" />
+                <Image source={SETTINGS} style={{width: 30, height: 30}} />
               )}
               right={(props) => (
                 <Ionicons {...props} size={24} name="chevron-forward-outline" />
@@ -45,23 +53,25 @@ const More = (props) => {
               }}
               title="Orders"
               left={(props) => (
-                <Ionicons {...props} size={30} name="document-text-outline" />
+                <Image source={ORDER} style={{width: 30, height: 30}} />
               )}
               right={(props) => (
                 <Ionicons {...props} size={24} name="chevron-forward-outline" />
               )}
             />
             <List.Item
-            onPress={() => props.navigation.navigate('PaymentMethods')}
+              onPress={() => props.navigation.navigate('PaymentMethods')}
               style={{
                 backgroundColor: '#fff',
                 marginVertical: 1,
                 paddingVertical: 15,
-
               }}
               title="Payment Methods"
               left={(props) => (
-                <Ionicons {...props} size={30} name="card-outline" />
+                <Image
+                  source={PAYMENT_DETAILS}
+                  style={{width: 30, height: 30}}
+                />
               )}
               right={(props) => (
                 <Ionicons {...props} size={24} name="chevron-forward-outline" />
@@ -75,7 +85,10 @@ const More = (props) => {
               }}
               title="Privacy Policy"
               left={(props) => (
-                <Ionicons {...props} size={30} name="shield-outline" />
+                <Image
+                  source={PRIVACY_POLICY}
+                  style={{width: 30, height: 30}}
+                />
               )}
               right={(props) => (
                 <Ionicons {...props} size={24} name="chevron-forward-outline" />
@@ -89,10 +102,9 @@ const More = (props) => {
               }}
               title="Terms & Conditions"
               left={(props) => (
-                <Ionicons
-                  {...props}
-                  size={30}
-                  name="shield-checkmark-outline"
+                <Image
+                  source={TERMS_CONDITIONS}
+                  style={{width: 30, height: 30}}
                 />
               )}
               right={(props) => (
@@ -107,7 +119,7 @@ const More = (props) => {
               }}
               title="Help Center"
               left={(props) => (
-                <Ionicons {...props} size={30} name="help-circle-outline" />
+                <Image source={HELP} style={{width: 30, height: 30}} />
               )}
               right={(props) => (
                 <Ionicons {...props} size={24} name="chevron-forward-outline" />
@@ -123,21 +135,6 @@ const More = (props) => {
               title="Log Out"
               left={(props) => (
                 <Ionicons {...props} size={30} name="log-out-outline" />
-              )}
-              right={(props) => (
-                <Ionicons {...props} size={24} name="chevron-forward-outline" />
-              )}
-            />
-            <List.Item
-              onPress={handelExit}
-              style={{
-                backgroundColor: '#fff',
-                marginVertical: 1,
-                paddingVertical: 15,
-              }}
-              title="Exit App"
-              left={(props) => (
-                <Ionicons {...props} size={30} name="close-circle-outline" />
               )}
               right={(props) => (
                 <Ionicons {...props} size={24} name="chevron-forward-outline" />

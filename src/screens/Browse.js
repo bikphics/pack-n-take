@@ -7,7 +7,7 @@ import {width} from '../config/Style';
 import StoreProductCard from '../components/PT/StoreProductCard';
 const Tab = createMaterialTopTabNavigator();
 
-const Browse = () => {
+const Browse = (props) => {
   return (
     <>
       <Header title="Browse" />
@@ -21,12 +21,12 @@ const Browse = () => {
           }}>
           <Tab.Screen
             name="Packs"
-            component={ProductCards}
+            component={StoreProductCards}
             options={{title: 'Packs'}}
           />
           <Tab.Screen
             name="Stores"
-            component={StoreProductCards}
+            component={ProductCards}
             options={{title: 'Stores'}}
           />
         </Tab.Navigator>
@@ -37,22 +37,33 @@ const Browse = () => {
 
 export default Browse;
 
-function ProductCards() {
+function ProductCards(props) {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ProductCard cardStyle={{width: width - 20}} />
+        <ProductCard
+          cardStyle={{width: width - 20}}
+          onPress={() =>
+            props.navigation.push('ProductDetailed', 'Product Details')
+          }
+        />
         <ProductCard cardStyle={{width: width - 20}} productImg={DISH_IMG} />
         <ProductCard cardStyle={{width: width - 20}} />
       </ScrollView>
     </View>
   );
 }
-function StoreProductCards() {
+function StoreProductCards(props) {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <StoreProductCard cardStyle={{width: width - 20}} corner />
+        <StoreProductCard
+          onPress={() =>
+            props.navigation.push('ProductDetails', 'Product Detailed')
+          }
+          cardStyle={{width: width - 20}}
+          corner
+        />
         <StoreProductCard
           cardStyle={{width: width - 20}}
           productImg={DISH_IMG}

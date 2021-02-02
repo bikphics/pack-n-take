@@ -12,7 +12,7 @@ const SettingTabsContainer = (props) => {
         style={{
           flexDirection: 'row',
           alignItems: 'center',
-          borderBottomColor: '#ccc',
+          borderBottomColor: '#eee',
           borderBottomWidth: 2,
           paddingBottom: 10,
           backgroundColor: '#fff',

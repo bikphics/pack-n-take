@@ -25,16 +25,7 @@ const ChangePassword = (props) => {
       <SafeAreaView style={{flex: 1}}>
         <ScrollView style={{padding: 14}}>
           <Card>
-            <Card.Title
-              title="Change Password"
-              left={(props) => (
-                <Ionicons
-                  name="key-outline"
-                  color={PT_COLORS.secondaryDark}
-                  {...props}
-                />
-              )}
-            />
+            <Card.Title title="Change Password" />
             <Card.Content>
               <PTTextInput
                 labelWrapperStyle={{backgroundColor: '#fff'}}
@@ -57,7 +48,7 @@ const ChangePassword = (props) => {
                 onPress={() => {}}
                 mode="contained"
                 style={{marginVertical: 10, width: '100%'}}
-                color={PT_COLORS.secondaryDark}>
+                color="#394047">
                 Save Changes
               </Button>
             </Card.Actions>
