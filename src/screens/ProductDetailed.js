@@ -363,7 +363,7 @@ const ProductDetailed = (props) => {
               <View
                 style={{
                   width: '100%',
-                  height: 360,
+                  height: 500,
                   backgroundColor: '#000000a0',
                 }}>
                 <View
@@ -382,14 +382,27 @@ const ProductDetailed = (props) => {
                       color="white"></Ionicons>
                   </View>
                   <View>
-                    <AntDesign name="hearto" color={'#ddd'} size={25} />
+                    <AntDesign name="hearto" color={'#ddd'} size={32} />
                   </View>
                 </View>
                 <View
                   style={{
+                    height: 100,
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    marginTop: 60,
+                    marginBottom: 15,
+                  }}>
+                  <Image
+                    style={{height: 100, width: 100, borderRadius: 50}}
+                    source={LOGO}
+                  />
+                </View>
+                <View
+                  style={{
                     width: '100%',
-                    height: '50%',
-                    backgroundColor: '#ddd',
+                    height: '70%',
+                    backgroundColor: '#E9ECEF',
                     padding: 5,
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
@@ -402,9 +415,8 @@ const ProductDetailed = (props) => {
                       <Text
                         style={{
                           color: '#000',
-                          fontSize: 16,
+                          fontSize: 20,
                           fontWeight: 'bold',
-                          marginBottom: 8,
                         }}>
                         Steak House
                       </Text>

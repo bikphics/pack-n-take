@@ -21,12 +21,12 @@ const Browse = (props) => {
           }}>
           <Tab.Screen
             name="Packs"
-            component={StoreProductCards}
+            component={ProductCards}
             options={{title: 'Packs'}}
           />
           <Tab.Screen
             name="Stores"
-            component={ProductCards}
+            component={StoreProductCards}
             options={{title: 'Stores'}}
           />
         </Tab.Navigator>
@@ -37,23 +37,30 @@ const Browse = (props) => {
 
 export default Browse;
 
-function ProductCards(props) {
+function StoreProductCards(props) {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <ProductCard
+          isCentered
+          priceTag
           cardStyle={{width: width - 20}}
           onPress={() =>
             props.navigation.push('ProductDetailed', 'Product Details')
           }
         />
-        <ProductCard cardStyle={{width: width - 20}} productImg={DISH_IMG} />
-        <ProductCard cardStyle={{width: width - 20}} />
+        <ProductCard
+          isCentered
+          priceTag
+          cardStyle={{width: width - 20}}
+          productImg={DISH_IMG}
+        />
+        <ProductCard priceTag isCentered cardStyle={{width: width - 20}} />
       </ScrollView>
     </View>
   );
 }
-function StoreProductCards(props) {
+function ProductCards(props) {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
