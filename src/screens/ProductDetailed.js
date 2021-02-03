@@ -55,6 +55,7 @@ const ProductDetailed = (props) => {
 
   BackHandler.addEventListener('hardwareBackPress', backAction);
 
+  const hideBuyNow = props?.route?.params?.hideBuyNow || false;
   return (
     <>
       <Modal
@@ -546,37 +547,39 @@ const ProductDetailed = (props) => {
         </TriggeringView>
       </ImageHeaderScrollView>
 
-      <View
-        style={{
-          width: '100%',
-          backgroundColor: '#eee',
-          height: 80,
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'row',
-        }}>
-        <TouchableOpacity onPress={handleModalClick}>
-          <View
-            style={{
-              width: width - 40,
-              backgroundColor: '#222',
-              paddingVertical: 14,
-              paddingHorizontal: 20,
-              marginVertical: 10,
-              borderRadius: 20,
-            }}>
-            <Text
+      {!hideBuyNow && (
+        <View
+          style={{
+            width: '100%',
+            backgroundColor: '#eee',
+            height: 80,
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity onPress={handleModalClick}>
+            <View
               style={{
-                color: '#fff',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                fontSize: 18,
+                width: width - 40,
+                backgroundColor: '#222',
+                paddingVertical: 14,
+                paddingHorizontal: 20,
+                marginVertical: 10,
+                borderRadius: 20,
               }}>
-              BUY NOW
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  fontSize: 18,
+                }}>
+                BUY NOW
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      )}
     </>
   );
 };

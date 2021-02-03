@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   },
   locationRangeWrap: {
     alignSelf: 'center',
+    marginTop: 5,
   },
   headerTitle: {
     textAlign: 'center',
