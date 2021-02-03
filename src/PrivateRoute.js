@@ -20,6 +20,10 @@ import {
   Settings,
 } from './screens';
 import OrderBooking from './screens/OrderBooking';
+import ProductDetailed from './screens/ProductDetailed';
+import PastOrderReviewDetails from './screens/PastOrderReviewDetail';
+import {BROWSE, DISCOVER, FAVOURITES, MORE} from './assets';
+import {Image} from 'react-native';
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -32,6 +36,7 @@ const PrivateRoute = () => {
       <Stack.Screen name="MainApp" component={MYTabs} />
       <Stack.Screen name="CategoryDetails" component={CategoryDetails} />
       <Stack.Screen name="ProductDetails" component={ProductDetails} />
+      <Stack.Screen name="ProductDetailed" component={ProductDetailed} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="Orders" component={Orders} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
@@ -40,6 +45,10 @@ const PrivateRoute = () => {
       <Stack.Screen name="Country" component={Country} />
       <Stack.Screen name="PaymentMethods" component={PaymentMethods} />
       <Stack.Screen name="OrderBooking" component={OrderBooking} />
+      <Stack.Screen
+        name="PastOrderReviewDetail"
+        component={PastOrderReviewDetails}
+      />
       <Stack.Screen
         name="PreveiousOrderDetails"
         component={PreveiousOrderDetails}
@@ -61,8 +70,8 @@ const MYTabs = () => (
       name="DiscoverTab"
       options={{
         tabBarLabel: 'Discover',
-        tabBarIcon: ({color}) => (
-          <Ionicons name="compass-outline" color={color} size={24} />
+        tabBarIcon: () => (
+          <Image source={DISCOVER} style={{width: 22, height: 22}} />
         ),
         tabBarColor: PT_COLORS.primaryBlack,
       }}
@@ -72,8 +81,8 @@ const MYTabs = () => (
       name="BrowseTab"
       options={{
         tabBarLabel: 'Browse',
-        tabBarIcon: ({color}) => (
-          <Feather name="shopping-bag" color={color} size={24} />
+        tabBarIcon: () => (
+          <Image source={BROWSE} style={{width: 22, height: 22}} />
         ),
         tabBarColor: PT_COLORS.primaryBlack,
       }}
@@ -83,8 +92,8 @@ const MYTabs = () => (
       name="FavoritesTab"
       options={{
         tabBarLabel: 'Favorites',
-        tabBarIcon: ({color}) => (
-          <AntDesign name="hearto" color={color} size={24} />
+        tabBarIcon: () => (
+          <Image source={FAVOURITES} style={{width: 22, height: 22}} />
         ),
         tabBarColor: PT_COLORS.primaryBlack,
       }}
@@ -94,8 +103,8 @@ const MYTabs = () => (
       name="MoreTab"
       options={{
         tabBarLabel: 'More',
-        tabBarIcon: ({color}) => (
-          <Feather name="more-horizontal" color={color} size={24} />
+        tabBarIcon: () => (
+          <Image source={MORE} style={{width: 22, height: 22}} />
         ),
         tabBarColor: PT_COLORS.primaryBlack,
       }}

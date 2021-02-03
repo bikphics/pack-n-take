@@ -1,19 +1,22 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {LOGO, RIGHT_ARROW} from '../../assets';
+import {LOGO, RIGHT_ARROW, PENDING} from '../../assets';
 import Badge from './Badge';
 
 const OrderCard = ({onPress}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.imgWrapper}>
-        <Image style={{width: 65, height: 65}} source={LOGO} />
+        <Image style={{width: 60, height: 60, marginLeft: 8}} source={LOGO} />
       </View>
       <View style={styles.contentWrapper}>
         <View>
           <Text style={styles.hotelName}>Steak House - Khalidya</Text>
-          <Text style={styles.orderStatus}>* Pending</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Image style={styles.icon} source={PENDING} />
+            <Text style={styles.orderStatus}>Pending</Text>
+          </View>
           <Text style={styles.packageStatus}>Inside The Package</Text>
           <View style={styles.badgeContainer}>
             <Badge title="Rice" backgroundColor="#333" />
@@ -61,25 +64,34 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   hotelName: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '700',
     paddingVertical: 2,
     color: '#222',
   },
   orderStatus: {
     color: 'orange',
-    paddingVertical: 1,
+    paddingVertical: 3,
+    fontSize: 10,
   },
   packageStatus: {
-    paddingVertical: 2,
-    fontWeight: '600',
+    marginTop: 8,
+    marginBottom: 4,
+    fontWeight: '500',
+    fontSize: 12,
   },
   datetime: {
     color: '#aaa',
     paddingTop: 10,
+    fontSize: 12,
   },
   arrowWrapper: {
     justifyContent: 'center',
+    marginRight: 5,
+  },
+  icon: {
+    height: 15,
+    width: 15,
     marginRight: 5,
   },
 });

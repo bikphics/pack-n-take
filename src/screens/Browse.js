@@ -7,12 +7,18 @@ import {width} from '../config/Style';
 import StoreProductCard from '../components/PT/StoreProductCard';
 const Tab = createMaterialTopTabNavigator();
 
-const Browse = () => {
+const Browse = (props) => {
   return (
     <>
       <Header title="Browse" />
       <SafeAreaView style={{flex: 1}}>
-        <Tab.Navigator>
+        <Tab.Navigator
+          tabBarOptions={{
+            indicatorStyle: {
+              borderBottomWidth: 3,
+              borderBottomColor: '#333',
+            },
+          }}>
           <Tab.Screen
             name="Packs"
             component={ProductCards}
@@ -31,22 +37,40 @@ const Browse = () => {
 
 export default Browse;
 
-function ProductCards() {
+function StoreProductCards(props) {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ProductCard cardStyle={{width: width - 20}} />
-        <ProductCard cardStyle={{width: width - 20}} productImg={DISH_IMG} />
-        <ProductCard cardStyle={{width: width - 20}} />
+        <ProductCard
+          isCentered
+          priceTag
+          cardStyle={{width: width - 20}}
+          onPress={() =>
+            props.navigation.push('ProductDetailed', 'Product Details')
+          }
+        />
+        <ProductCard
+          isCentered
+          priceTag
+          cardStyle={{width: width - 20}}
+          productImg={DISH_IMG}
+        />
+        <ProductCard priceTag isCentered cardStyle={{width: width - 20}} />
       </ScrollView>
     </View>
   );
 }
-function StoreProductCards() {
+function ProductCards(props) {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <StoreProductCard cardStyle={{width: width - 20}} corner />
+        <StoreProductCard
+          onPress={() =>
+            props.navigation.push('ProductDetails', 'Product Detailed')
+          }
+          cardStyle={{width: width - 20}}
+          corner
+        />
         <StoreProductCard
           cardStyle={{width: width - 20}}
           productImg={DISH_IMG}

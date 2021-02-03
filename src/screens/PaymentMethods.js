@@ -15,7 +15,19 @@ import {APPLE_PAY, MASTERCARD, VISA, CASH_ON_DELIVERY} from '../assets';
 const PaymentMethods = (props) => {
   return (
     <>
-      <Header title="Payment Methods" hideIcons hideLocationRange />
+      <Header
+        title="Payment Methods"
+        left={{
+          icon: (
+            <Ionicons name="chevron-back-outline" color={'#fff'} size={24} />
+          ),
+          onPress: () => {
+            props.navigation.goBack();
+          },
+        }}
+        hideIcons
+        hideLocationRange
+      />
       <SafeAreaView style={{flex: 1}}>
         <ScrollView>
           <View style={{flex: 1, marginTop: 20}}>

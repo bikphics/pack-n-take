@@ -39,7 +39,7 @@ const Header = (props) => {
 export default Header;
 const styles = StyleSheet.create({
   headerContainerWrap: {
-    backgroundColor: '#333',
+    backgroundColor: '#394047',
     paddingTop: Platform.OS === 'ios' ? 30 : 0,
   },
   headerLeft: {
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 10,
     marginTop: 1,
-    backgroundColor: '#333',
+    backgroundColor: '#394047',
   },
   headerContentWrap: {
     flex: 1,

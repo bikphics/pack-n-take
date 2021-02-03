@@ -17,6 +17,8 @@ const Country = (props) => {
             props.navigation.goBack();
           },
         }}
+        hideIcons
+        hideLocationRange
       />
       <SafeAreaView style={{flex: 1}}>
         <SettingTabsContainer

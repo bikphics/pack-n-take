@@ -3,6 +3,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {Header, OrderCard} from '../components';
 import {ScrollView, View, SafeAreaView} from 'react-native';
+import PastOrderCard from '../components/PT/PastOrderCard';
 const Tab = createMaterialTopTabNavigator();
 
 const Orders = (props) => {
@@ -18,6 +19,8 @@ const Orders = (props) => {
             props.navigation.goBack();
           },
         }}
+        hideIcons
+        hideLocationRange
       />
       <SafeAreaView style={{flex: 1}}>
         <Tab.Navigator
@@ -34,7 +37,7 @@ const Orders = (props) => {
           />
           <Tab.Screen
             name="Past"
-            component={ProductCards}
+            component={PastOrder}
             options={{title: 'Past'}}
           />
         </Tab.Navigator>
@@ -61,8 +64,25 @@ function ProductCards(props) {
         <OrderCard
           onPress={() => props.navigation.push('PreveiousOrderDetails', 'More')}
         />
-        <OrderCard
-          onPress={() => props.navigation.push('PreveiousOrderDetails', 'More')}
+      </ScrollView>
+    </View>
+  );
+}
+function PastOrder(props) {
+  return (
+    <View style={{flex: 1, padding: 10}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <PastOrderCard
+          onPress={() => props.navigation.push('PastOrderReviewDetail', 'More')}
+        />
+        <PastOrderCard
+          onPress={() => props.navigation.push('PastOrderReviewDetail', 'More')}
+        />
+        <PastOrderCard
+          onPress={() => props.navigation.push('PastOrderReviewDetail', 'More')}
+        />
+        <PastOrderCard
+          onPress={() => props.navigation.push('PastOrderReviewDetail', 'More')}
         />
       </ScrollView>
     </View>
