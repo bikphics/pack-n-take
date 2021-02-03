@@ -1,10 +1,9 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {LOGO, RIGHT_ARROW, PENDING, STAR, SUCCESS} from '../../assets';
-import Badge from './Badge';
+import {LOGO, RIGHT_ARROW, STAR, SUCCESS} from '../../assets';
 
-const PastOrderCard = ({onPress}) => {
+const PastOrderCard = ({onPress, hidePending}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.imgWrapper}>
@@ -13,10 +12,12 @@ const PastOrderCard = ({onPress}) => {
       <View style={styles.contentWrapper}>
         <View>
           <Text style={styles.hotelName}>Steak House - Khalidya</Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Image style={styles.icon} source={SUCCESS} />
-            <Text style={styles.orderStatus}>Pending</Text>
-          </View>
+          {!hidePending && (
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Image style={styles.icon} source={SUCCESS} />
+              <Text style={styles.orderStatus}>Pending</Text>
+            </View>
+          )}
           <Text style={styles.packageStatus}>How was The Package?</Text>
           <View style={styles.badgeContainer}>
             <Image style={styles.ratingsIcon} source={STAR} />

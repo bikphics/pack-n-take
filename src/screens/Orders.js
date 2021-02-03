@@ -74,15 +74,19 @@ function PastOrder(props) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <PastOrderCard
           onPress={() => props.navigation.push('PastOrderReviewDetail', 'More')}
+          hidePending
         />
         <PastOrderCard
           onPress={() => props.navigation.push('PastOrderReviewDetail', 'More')}
+          hidePending
         />
         <PastOrderCard
           onPress={() => props.navigation.push('PastOrderReviewDetail', 'More')}
+          hidePending
         />
         <PastOrderCard
           onPress={() => props.navigation.push('PastOrderReviewDetail', 'More')}
+          hidePending
         />
       </ScrollView>
     </View>

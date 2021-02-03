@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {LOGO, WELCOME_IMG} from '../../assets';
+import {PT_COLORS} from '../../config';
 import {width} from '../../config/Style';
 const ProductCard = ({
   productImg,
@@ -30,53 +31,25 @@ const ProductCard = ({
       style={{...styles.cardStyle, ...cardStyle, ...cardMargin}}
       onPress={onPress}>
       <ImageBackground source={productImg || WELCOME_IMG} style={styles.image}>
-        <View
-          style={{width: '100%', height: 300, backgroundColor: '#000000a0'}}>
+        <View style={styles.cardWrapper}>
           <View
             style={{
-              flex: 1,
-              flexDirection: 'row',
+              ...styles.fdRow,
               ...logoStyle,
             }}>
             <Image source={LOGO} style={{borderRadius: 40, ...logoSize}} />
           </View>
-          <View
-            style={{
-              width: '100%',
-              height: '48%',
-              backgroundColor: '#e9ecef',
-              padding: 5,
-              borderTopLeftRadius: 20,
-              borderTopRightRadius: 20,
-              position: 'relative',
-            }}>
-            <View
-              style={{
-                backgroundColor: '#394047',
-                padding: 8,
-                borderRadius: 20,
-                position: 'absolute',
-                top: -18,
-                left: 14,
-              }}>
+          <View style={styles.contentWrapper}>
+            <View style={styles.logoWrapper}>
               <AntDesign name="hearto" color={'#ddd'} size={20} />
             </View>
             <View style={{flex: 1, flexDirection: 'row'}}>
               <View style={{paddingTop: 20, paddingLeft: 10, flex: 4}}>
-                <Text
-                  style={{
-                    color: '#212529',
-                    fontSize: 15,
-                    fontWeight: 'bold',
-                    marginBottom: 7,
-                  }}>
-                  Steak House-Khalidya
-                </Text>
-                <Text style={{color: '#000', fontSize: 11}}>
+                <Text style={styles.cardTitle}>Steak House-Khalidya</Text>
+                <Text style={{color: '#000', fontSize: 13}}>
                   Inside The Package
                 </Text>
-                <View
-                  style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
+                <View style={{flexDirection: 'row', marginTop: 5}}>
                   <View
                     style={{
                       padding: 5,
@@ -114,57 +87,19 @@ const ProductCard = ({
                     <Text style={{color: '#F8F9FA', fontSize: 11}}>Steak</Text>
                   </View>
                 </View>
-                <Text
-                  style={{color: '#888', fontSize: 12, paddingVertical: 10}}>
-                  Collect directly-250m
-                </Text>
+                <Text style={styles.noteStyle}>Collect directly-250m</Text>
               </View>
-              <View style={{flex: 2, justifyContent: 'flex-start'}}>
-                <View
-                  style={{
-                    backgroundColor: '#394047',
-                    justifyContent: 'center',
-                    flexDirection: 'row',
-                    marginTop: 25,
-                    paddingHorizontal: 10,
-                    paddingVertical: 5,
-                    borderRadius: 5,
-                    alignSelf: 'center',
-                  }}>
-                  <Text style={{color: '#ddd', fontSize: 10}}>5+ Left</Text>
+              <View style={styles.btnWrapper}>
+                <View style={styles.itemLeftBtn}>
+                  <Text style={styles.itemLeftBtnText}>5+ Left</Text>
                 </View>
                 {!priceTag && (
-                  <View
-                    style={{
-                      backgroundColor: '#394047',
-                      justifyContent: 'center',
-                      flexDirection: 'column',
-                      alignSelf: 'center',
-                      marginTop: 15,
-                      paddingHorizontal: 10,
-                      paddingVertical: 5,
-                      borderRadius: 5,
-                    }}>
+                  <View style={styles.priceBtn}>
                     <View>
-                      <Text
-                        style={{
-                          color: '#ddd',
-                          textAlign: 'center',
-                          fontSize: 12,
-                        }}>
-                        AED 40.00
-                      </Text>
+                      <Text style={styles.priceBtnSubtitle}>AED 40.00</Text>
                     </View>
                     <View>
-                      <Text
-                        style={{
-                          color: '#ddd',
-                          fontSize: 16,
-                          marginTop: 10,
-                          textAlign: 'center',
-                        }}>
-                        AED 20.00
-                      </Text>
+                      <Text style={styles.priceBtnTitle}>AED 20.00</Text>
                     </View>
                   </View>
                 )}
@@ -193,5 +128,81 @@ const styles = StyleSheet.create({
     width: width - 80,
     alignSelf: 'center',
     marginTop: 8,
+  },
+  cardWrapper: {
+    width: '100%',
+    height: 300,
+    backgroundColor: '#000000a0',
+  },
+  contentWrapper: {
+    width: '100%',
+    height: '48%',
+    backgroundColor: '#e9ecef',
+    padding: 5,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    position: 'relative',
+  },
+  logoWrapper: {
+    backgroundColor: PT_COLORS.secondaryBlack,
+    padding: 8,
+    borderRadius: 20,
+    position: 'absolute',
+    top: -18,
+    left: 14,
+  },
+  cardTitle: {
+    color: PT_COLORS.secondaryBlack,
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginBottom: 7,
+  },
+  itemLeftBtn: {
+    backgroundColor: PT_COLORS.secondaryBlack,
+    justifyContent: 'center',
+    flexDirection: 'row',
+    marginTop: 25,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 5,
+    alignSelf: 'center',
+  },
+  itemLeftBtnText: {
+    color: '#ddd',
+    fontSize: 12,
+  },
+  priceBtn: {
+    backgroundColor: PT_COLORS.secondaryBlack,
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignSelf: 'center',
+    marginTop: 15,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 5,
+  },
+  priceBtnTitle: {
+    color: '#ddd',
+    fontSize: 16,
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  priceBtnSubtitle: {
+    color: '#ddd',
+    textAlign: 'center',
+    fontSize: 12,
+  },
+  btnWrapper: {
+    flex: 2,
+    justifyContent: 'flex-start',
+  },
+  noteStyle: {
+    color: '#888',
+    fontSize: 12,
+    paddingVertical: 10,
+  },
+  fdRow: {
+    flex: 1,
+    flexDirection: 'row',
   },
 });

@@ -10,12 +10,8 @@ const Discover = (props) => {
   return (
     <>
       <Header title="Khalidya, Abu Dhabi" />
-      {/* <Appbar
-        >
-        <Appbar.Content title="Khalidya, Abu Dhabi" subtitle={'With in 3km'} />
-      </Appbar> */}
       <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 1, paddingHorizontal: 3, marginTop: 10}}>
+        <View style={{flex: 1}}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <View
               style={{
