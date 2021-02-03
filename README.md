@@ -26,3 +26,9 @@
 ## Change Package Name
 
 - `npx react-native-rename "MyApp" -b com.mycompany.myapp`
+
+## Un track Git Files
+
+- `git rm -r --cached .`
+- `git add .`
+- `git commit -m ".gitignore fix"`
