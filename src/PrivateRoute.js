@@ -22,6 +22,8 @@ import {
 import OrderBooking from './screens/OrderBooking';
 import ProductDetailed from './screens/ProductDetailed';
 import PastOrderReviewDetails from './screens/PastOrderReviewDetail';
+import {BROWSE, DISCOVER, FAVOURITES, MORE} from './assets';
+import {Image} from 'react-native';
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -68,8 +70,8 @@ const MYTabs = () => (
       name="DiscoverTab"
       options={{
         tabBarLabel: 'Discover',
-        tabBarIcon: ({color}) => (
-          <Ionicons name="compass-outline" color={color} size={24} />
+        tabBarIcon: () => (
+          <Image source={DISCOVER} style={{width: 22, height: 22}} />
         ),
         tabBarColor: PT_COLORS.primaryBlack,
       }}
@@ -79,8 +81,8 @@ const MYTabs = () => (
       name="BrowseTab"
       options={{
         tabBarLabel: 'Browse',
-        tabBarIcon: ({color}) => (
-          <Feather name="shopping-bag" color={color} size={24} />
+        tabBarIcon: () => (
+          <Image source={BROWSE} style={{width: 22, height: 22}} />
         ),
         tabBarColor: PT_COLORS.primaryBlack,
       }}
@@ -90,8 +92,8 @@ const MYTabs = () => (
       name="FavoritesTab"
       options={{
         tabBarLabel: 'Favorites',
-        tabBarIcon: ({color}) => (
-          <AntDesign name="hearto" color={color} size={24} />
+        tabBarIcon: () => (
+          <Image source={FAVOURITES} style={{width: 22, height: 22}} />
         ),
         tabBarColor: PT_COLORS.primaryBlack,
       }}
@@ -101,8 +103,8 @@ const MYTabs = () => (
       name="MoreTab"
       options={{
         tabBarLabel: 'More',
-        tabBarIcon: ({color}) => (
-          <Feather name="more-horizontal" color={color} size={24} />
+        tabBarIcon: () => (
+          <Image source={MORE} style={{width: 22, height: 22}} />
         ),
         tabBarColor: PT_COLORS.primaryBlack,
       }}

@@ -44,7 +44,7 @@ const ProductCard = ({
             style={{
               width: '100%',
               height: '48%',
-              backgroundColor: '#ddd',
+              backgroundColor: '#e9ecef',
               padding: 5,
               borderTopLeftRadius: 20,
               borderTopRightRadius: 20,
@@ -52,7 +52,7 @@ const ProductCard = ({
             }}>
             <View
               style={{
-                backgroundColor: '#333',
+                backgroundColor: '#394047',
                 padding: 8,
                 borderRadius: 20,
                 position: 'absolute',
@@ -122,7 +122,7 @@ const ProductCard = ({
               <View style={{flex: 2, justifyContent: 'flex-start'}}>
                 <View
                   style={{
-                    backgroundColor: '#444',
+                    backgroundColor: '#394047',
                     justifyContent: 'center',
                     flexDirection: 'row',
                     marginTop: 25,
@@ -136,7 +136,7 @@ const ProductCard = ({
                 {!priceTag && (
                   <View
                     style={{
-                      backgroundColor: '#444',
+                      backgroundColor: '#394047',
                       justifyContent: 'center',
                       flexDirection: 'column',
                       alignSelf: 'center',

@@ -28,6 +28,10 @@ const TERMS_CONDITIONS = require('./light-icons/terms-condition.png');
 const HELP = require('./light-icons/help.png');
 const STAR = require('./light-icons/star.png');
 const SUCCESS = require('./light-icons/success.png');
+const MORE = require('./light-icons/more.png');
+const BROWSE = require('./light-icons/browse.png');
+const DISCOVER = require('./light-icons/discover.png');
+const FAVOURITES = require('./light-icons/favourites.png');
 export {
   WELCOME_IMG,
   LOGO,
@@ -52,4 +56,8 @@ export {
   HELP,
   STAR,
   SUCCESS,
+  BROWSE,
+  MORE,
+  DISCOVER,
+  FAVOURITES,
 };
