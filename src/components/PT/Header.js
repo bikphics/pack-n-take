@@ -31,6 +31,9 @@ const Header = (props) => {
           style={styles.headerRight}>
           {props.right && props.right.icon}
         </TouchableOpacity>
+        {props.left && !props.right && (
+          <View style={styles.centerHeader}></View>
+        )}
       </View>
     </View>
   );
@@ -85,5 +88,8 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     marginHorizontal: 5,
+  },
+  centerHeader: {
+    marginRight: 25,
   },
 });

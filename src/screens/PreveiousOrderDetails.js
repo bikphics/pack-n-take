@@ -4,7 +4,7 @@ import MCIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Image, ScrollView, StyleSheet, View} from 'react-native';
 import {Button, Card, Title, Text, List, Subheading} from 'react-native-paper';
-import {BAG, EDIT, SHOP, MAP} from '../assets';
+import {BAG, EDIT, SHOP, MAP, PEN, HOTEL, INSIDE_PACKAGE} from '../assets';
 import {Header} from '../components';
 import {COLORS, PT_COLORS} from '../config';
 
@@ -89,11 +89,12 @@ const PreveiousOrderDetails = (props) => {
                 title="Steakhouse - Khalidya, Abu Dhabi"
                 left={(props) => (
                   <Image
-                    source={SHOP}
+                    source={HOTEL}
                     style={{
                       resizeMode: 'contain',
-                      width: 35,
-                      height: 35,
+                      width: 25,
+                      height: 25,
+                      marginTop: 4,
                     }}
                   />
                 )}
@@ -115,13 +116,12 @@ const PreveiousOrderDetails = (props) => {
                 title="Inside The Package"
                 left={(props) => (
                   <Image
-                    source={BAG}
+                    source={INSIDE_PACKAGE}
                     style={{
                       resizeMode: 'contain',
                       width: 25,
                       height: 25,
                       marginTop: 4,
-                      marginLeft: 5,
                     }}
                   />
                 )}
@@ -151,12 +151,13 @@ const PreveiousOrderDetails = (props) => {
                 title="Personal Note"
                 left={(props) => (
                   <Image
-                    source={EDIT}
+                    source={PEN}
                     style={{
                       resizeMode: 'contain',
                       width: 25,
                       height: 25,
                       marginTop: 4,
+                      marginLeft: 10,
                     }}
                   />
                 )}

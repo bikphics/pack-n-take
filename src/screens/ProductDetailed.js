@@ -29,7 +29,7 @@ import {MAP} from '../assets';
 
 const ProductDetailed = (props) => {
   const MIN_HEIGHT = Platform.OS === 'ios' ? 120 : 80;
-  const MAX_HEIGHT = 350;
+  const MAX_HEIGHT = 420;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -359,12 +359,12 @@ const ProductDetailed = (props) => {
         maxHeight={MAX_HEIGHT}
         minHeight={MIN_HEIGHT}
         renderTouchableFixedForeground={() => (
-          <View style={{width: '100%', height: 350}}>
+          <View style={{width: '100%', height: 420}}>
             <ImageBackground source={WELCOME_IMG} style={styles.image}>
               <View
                 style={{
                   width: '100%',
-                  height: 500,
+                  height: 420,
                   backgroundColor: '#000000a0',
                 }}>
                 <View
@@ -388,21 +388,21 @@ const ProductDetailed = (props) => {
                 </View>
                 <View
                   style={{
-                    height: 100,
+                    height: 120,
                     flexDirection: 'row',
                     justifyContent: 'center',
-                    marginTop: 60,
+                    marginTop: 20,
                     marginBottom: 15,
                   }}>
                   <Image
-                    style={{height: 100, width: 100, borderRadius: 50}}
+                    style={{height: 75, width: 75, borderRadius: 50}}
                     source={LOGO}
                   />
                 </View>
                 <View
                   style={{
                     width: '100%',
-                    height: '70%',
+                    height: '40%',
                     backgroundColor: '#E9ECEF',
                     padding: 5,
                     borderTopLeftRadius: 20,
@@ -561,7 +561,7 @@ const ProductDetailed = (props) => {
             <View
               style={{
                 width: width - 40,
-                backgroundColor: '#222',
+                backgroundColor: '#394047',
                 paddingVertical: 14,
                 paddingHorizontal: 20,
                 marginVertical: 10,
@@ -607,5 +607,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+  card: {
+    backgroundColor: '#F8F9FA',
+    marginTop: 35,
   },
 });

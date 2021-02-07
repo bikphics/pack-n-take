@@ -19,6 +19,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {ScrollView} from 'react-native';
 import {ProductCard} from '../components';
 import {APPLE_PAY, MASTERCARD, VISA, CASH_ON_DELIVERY} from '../assets';
+import {Card, Title, Subheading} from 'react-native-paper';
 import {
   ImageHeaderScrollView,
   TriggeringView,
@@ -479,24 +480,17 @@ const ProductDetails = (props) => {
         )}>
         <TriggeringView>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <View
-              style={{
-                backgroundColor: '#ddd',
-                marginTop: 35,
-                paddingLeft: 15,
-                paddingRight: 10,
-              }}>
-              <View>
-                <Text style={{fontSize: 20, fontWeight: '700'}}>
-                  Inside The Package
-                </Text>
-              </View>
+            <Card style={styles.card}>
+              <Card.Title
+                title="PREPAIRING & PACKAGING"
+                style={styles.cardTitle}
+              />
               <View
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
-                  marginTop: 10,
-                  marginLeft: 10,
+                  marginTop: 8,
+                  marginLeft: 25,
                 }}>
                 <View
                   style={{
@@ -528,20 +522,20 @@ const ProductDetails = (props) => {
                 <View
                   style={{
                     padding: 5,
-                    backgroundColor: '#839873',
+                    backgroundColor: '#394047',
                     marginRight: 10,
                     borderRadius: 5,
                   }}>
                   <Text style={{color: '#fff'}}>Steak</Text>
                 </View>
               </View>
-              <View>
-                <Text style={{fontSize: 20, fontWeight: '700', marginTop: 25}}>
+              {/* <View>
+                <Text style={{fontSize: 20, fontWeight: '700', marginTop: 15}}>
                   PREPAIRING & PACKAGING
                 </Text>
               </View>
               <View>
-                <Text style={{marginTop: 10, marginLeft: 10}}>
+                <Text style={{marginTop: 5, marginLeft: 10}}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
@@ -550,20 +544,44 @@ const ProductDetails = (props) => {
                 </Text>
               </View>
               <View>
-                <Text style={{fontSize: 20, fontWeight: '700', marginTop: 15}}>
+                <Text style={{fontSize: 20, fontWeight: '700', marginTop: 10}}>
                   INGREDIENTS & ALLERGENS
                 </Text>
               </View>
               <View>
-                <Text style={{marginTop: 10, marginLeft: 10}}>
+                <Text style={{marginTop: 5, marginLeft: 10, paddingBottom: 5}}>
                   You can always write a note to the resturant while you process
                   your purchant.{' '}
                 </Text>
-              </View>
-            </View>
+              </View> */}
+
+              <Card.Title
+                title="PREPAIRING & PACKAGING"
+                style={{marginTop: 15}}
+              />
+              <Card.Content>
+                <Subheading style={{paddingVertical: 8}}>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book.
+                </Subheading>
+              </Card.Content>
+              <Card.Title
+                title="PREPAIRING & PACKAGING"
+                style={styles.cardTitle}
+              />
+              <Card.Content>
+                <Subheading style={{paddingVertical: 8}}>
+                  You can always write a note to the resturant while you process
+                  your purchant.{' '}
+                </Subheading>
+              </Card.Content>
+            </Card>
             <View
               style={{
-                backgroundColor: '#ddd',
+                backgroundColor: '#F8F9FA',
                 marginTop: 25,
                 paddingVertical: 5,
               }}>
@@ -577,13 +595,14 @@ const ProductDetails = (props) => {
                 height: 250,
                 backgroundColor: '#ccc',
               }}></View>
-            <View style={{backgroundColor: '#ddd', paddingVertical: 5}}>
+            <View style={{backgroundColor: '#F8F9FA', paddingVertical: 10}}>
               <Text style={{fontSize: 16, fontWeight: '600', paddingLeft: 15}}>
                 Khalidia - Abu Dhabi
               </Text>
             </View>
             <ScrollView
               horizontal
+              backgroundColor="#F8F9FA"
               showsHorizontalScrollIndicator={false}
               style={{marginTop: 25}}>
               <ProductCard
@@ -606,7 +625,7 @@ const ProductDetails = (props) => {
               />
             </ScrollView>
 
-            <View style={{marginTop: 25, backgroundColor: '#ddd'}}>
+            <View style={{marginTop: 25, backgroundColor: '#F8F9FA'}}>
               <Text
                 style={{
                   fontSize: 16,
@@ -825,7 +844,7 @@ const ProductDetails = (props) => {
             <View
               style={{
                 padding: 7,
-                backgroundColor: '#ddd',
+                backgroundColor: '#F8F9FA',
                 marginTop: 35,
                 paddingLeft: 15,
                 paddingRight: 10,
@@ -859,7 +878,7 @@ const ProductDetails = (props) => {
           <View
             style={{
               width: width - 40,
-              backgroundColor: '#222',
+              backgroundColor: '#394047',
               paddingVertical: 14,
               paddingHorizontal: 20,
               marginVertical: 10,
@@ -888,21 +907,19 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'center',
   },
-  cardStyle: {
+  card: {
     resizeMode: 'cover',
     justifyContent: 'center',
-    borderRadius: 6,
+    borderRadius: 0,
     overflow: 'hidden',
-    margin: 5,
-    width: width - 45,
+    width: width,
     alignSelf: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    backgroundColor: '#F8F9FA',
+    marginTop: 35,
+    paddingLeft: 5,
+    paddingRight: 10,
   },
 });

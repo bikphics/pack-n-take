@@ -41,21 +41,28 @@ function StoreProductCards(props) {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ProductCard
+        <StoreProductCard
           isCentered
           priceTag
           cardStyle={{width: width - 20}}
           onPress={() =>
             props.navigation.push('ProductDetailed', {hideBuyNow: true})
           }
+          isStoreCard={true}
         />
-        <ProductCard
+        <StoreProductCard
           isCentered
           priceTag
           cardStyle={{width: width - 20}}
           productImg={DISH_IMG}
+          isStoreCard={true}
         />
-        <ProductCard priceTag isCentered cardStyle={{width: width - 20}} />
+        <StoreProductCard
+          priceTag
+          isCentered
+          cardStyle={{width: width - 20}}
+          isStoreCard={true}
+        />
       </ScrollView>
     </View>
   );
@@ -64,7 +71,7 @@ function ProductCards(props) {
   return (
     <View style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ProductCard
+        <StoreProductCard
           isCentered
           priceTag
           corner
@@ -73,14 +80,14 @@ function ProductCards(props) {
             props.navigation.push('ProductDetailed', {hideBuyNow: true})
           }
         />
-        <ProductCard
+        <StoreProductCard
           isCentered
           priceTag
           corner
           cardStyle={{width: width - 20}}
           productImg={DISH_IMG}
         />
-        <ProductCard
+        <StoreProductCard
           priceTag
           isCentered
           corner

@@ -10,6 +10,7 @@ import {
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {LOGO, WELCOME_IMG} from '../../assets';
 import {PT_COLORS} from '../../config';
+import {SvgUri} from 'react-native-svg';
 import {width} from '../../config/Style';
 const ProductCard = ({
   productImg,
@@ -18,6 +19,9 @@ const ProductCard = ({
   onPress,
   priceTag,
   isCentered,
+  restaurantName,
+  logoImg,
+  isStoreCard,
 }) => {
   const logoStyle = corner
     ? {justifyContent: 'flex-start', alignItems: 'flex-start', padding: 10}
@@ -37,74 +41,115 @@ const ProductCard = ({
               ...styles.fdRow,
               ...logoStyle,
             }}>
-            <Image source={LOGO} style={{borderRadius: 40, ...logoSize}} />
+            {!logoImg ? (
+              <Image source={LOGO} style={{borderRadius: 40, ...logoSize}} />
+            ) : (
+              <SvgUri width="100%" height="100%" logoImg />
+            )}
           </View>
           <View style={styles.contentWrapper}>
             <View style={styles.logoWrapper}>
               <AntDesign name="hearto" color={'#ddd'} size={20} />
             </View>
-            <View style={{flex: 1, flexDirection: 'row'}}>
-              <View style={{paddingTop: 20, paddingLeft: 10, flex: 4}}>
-                <Text style={styles.cardTitle}>Steak House-Khalidya</Text>
-                <Text style={{color: '#000', fontSize: 13}}>
-                  Inside The Package
-                </Text>
-                <View style={{flexDirection: 'row', marginTop: 5}}>
-                  <View
-                    style={{
-                      padding: 5,
-                      backgroundColor: '#AD4132',
-                      marginRight: 10,
-                      borderRadius: 5,
-                    }}>
-                    <Text style={{color: '#F8F9FA', fontSize: 11}}>Steak</Text>
-                  </View>
-                  <View
-                    style={{
-                      padding: 5,
-                      backgroundColor: '#F4AB2E',
-                      marginRight: 10,
-                      borderRadius: 5,
-                    }}>
-                    <Text style={{color: '#F8F9FA', fontSize: 11}}>Steak</Text>
-                  </View>
-                  <View
-                    style={{
-                      padding: 5,
-                      backgroundColor: '#56733C',
-                      marginRight: 10,
-                      borderRadius: 5,
-                    }}>
-                    <Text style={{color: '#F8F9FA', fontSize: 11}}>Steak</Text>
-                  </View>
-                  <View
-                    style={{
-                      padding: 5,
-                      backgroundColor: '#56733C',
-                      marginRight: 10,
-                      borderRadius: 5,
-                    }}>
-                    <Text style={{color: '#F8F9FA', fontSize: 11}}>Steak</Text>
-                  </View>
-                </View>
-                <Text style={styles.noteStyle}>Collect directly-250m</Text>
-              </View>
-              <View style={styles.btnWrapper}>
-                <View style={styles.itemLeftBtn}>
-                  <Text style={styles.itemLeftBtnText}>5+ Left</Text>
-                </View>
-                {!priceTag && (
-                  <View style={styles.priceBtn}>
-                    <View>
-                      <Text style={styles.priceBtnSubtitle}>AED 40.00</Text>
+            {!isStoreCard ? (
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{paddingTop: 20, paddingLeft: 10, flex: 4}}>
+                  <Text style={styles.cardTitle}>
+                    {restaurantName ? restaurantName : 'Steakhouse Khalidia'}
+                  </Text>
+                  <Text style={{color: '#000', fontSize: 13}}>
+                    Inside The Package
+                  </Text>
+                  <View style={{flexDirection: 'row', marginTop: 5}}>
+                    <View
+                      style={{
+                        padding: 5,
+                        backgroundColor: '#AD4132',
+                        marginRight: 10,
+                        borderRadius: 5,
+                      }}>
+                      <Text style={{color: '#F8F9FA', fontSize: 11}}>
+                        Steak
+                      </Text>
                     </View>
-                    <View>
-                      <Text style={styles.priceBtnTitle}>AED 20.00</Text>
+                    <View
+                      style={{
+                        padding: 5,
+                        backgroundColor: '#F4AB2E',
+                        marginRight: 10,
+                        borderRadius: 5,
+                      }}>
+                      <Text style={{color: '#F8F9FA', fontSize: 11}}>
+                        Steak
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        padding: 5,
+                        backgroundColor: '#56733C',
+                        marginRight: 10,
+                        borderRadius: 5,
+                      }}>
+                      <Text style={{color: '#F8F9FA', fontSize: 11}}>
+                        Steak
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        padding: 5,
+                        backgroundColor: '#56733C',
+                        marginRight: 10,
+                        borderRadius: 5,
+                      }}>
+                      <Text style={{color: '#F8F9FA', fontSize: 11}}>
+                        Steak
+                      </Text>
                     </View>
                   </View>
-                )}
+                  <Text style={styles.noteStyle}>Collect directly-250m</Text>
+                </View>
+                <View style={styles.btnWrapper}>
+                  <View style={styles.itemLeftBtn}>
+                    <Text style={styles.itemLeftBtnText}>5+ Left</Text>
+                  </View>
+                  {!priceTag && (
+                    <View style={styles.priceBtn}>
+                      <View>
+                        <Text style={styles.priceBtnSubtitle}>AED 40.00</Text>
+                      </View>
+                      <View>
+                        <Text style={styles.priceBtnTitle}>AED 20.00</Text>
+                      </View>
+                    </View>
+                  )}
+                </View>
               </View>
-            </View>
+            ) : (
+              <View>
+                <View style={{paddingTop: 20, paddingLeft: 10}}>
+                  <Text
+                    style={{
+                      color: '#000',
+                      fontSize: 16,
+                      fontWeight: 'bold',
+                      marginBottom: 4,
+                    }}>
+                    Steak House-Khalidya
+                  </Text>
+                </View>
+                <View style={{paddingTop: 2, paddingLeft: 10}}>
+                  <Text
+                    style={{
+                      color: '#000',
+                      fontSize: 14,
+                    }}>
+                    Lorem ipsum, or lipsum as it is sometimes known, is dummy
+                    text used in laying out print, graphic or web designs. The
+                    passage is attributed to an unknown typesetter in the 15th
+                  </Text>
+                </View>
+              </View>
+            )}
           </View>
         </View>
       </ImageBackground>

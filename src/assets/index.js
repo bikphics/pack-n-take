@@ -32,6 +32,9 @@ const MORE = require('./light-icons/more.png');
 const BROWSE = require('./light-icons/browse.png');
 const DISCOVER = require('./light-icons/discover.png');
 const FAVOURITES = require('./light-icons/favourites.png');
+const PEN = require('./light-icons/edit.png');
+const HOTEL = require('./light-icons/hotel.png');
+const INSIDE_PACKAGE = require('./light-icons/inside-package.png');
 export {
   WELCOME_IMG,
   LOGO,
@@ -60,4 +63,7 @@ export {
   MORE,
   DISCOVER,
   FAVOURITES,
+  PEN,
+  HOTEL,
+  INSIDE_PACKAGE,
 };
