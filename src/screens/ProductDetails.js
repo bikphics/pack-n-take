@@ -135,7 +135,7 @@ const ProductDetails = (props) => {
 
                     <TouchableOpacity
                       style={{
-                        borderColor: '#444',
+                        borderColor: '#394047',
                         marginHorizontal: 8,
                         borderRadius: 5,
                         padding: 5,
@@ -184,7 +184,7 @@ const ProductDetails = (props) => {
                     }}>
                     <TouchableOpacity
                       style={{
-                        borderColor: '#444',
+                        borderColor: '#394047',
                         paddingVertical: 5,
                         width: 160,
                         marginHorizontal: 8,
@@ -198,7 +198,7 @@ const ProductDetails = (props) => {
                     <TouchableOpacity
                       style={{
                         color: '#ddd',
-                        backgroundColor: '#444',
+                        backgroundColor: '#394047',
                         textAlign: 'center',
                         paddingVertical: 5,
                         width: 160,
@@ -390,7 +390,7 @@ const ProductDetails = (props) => {
                   style={{
                     width: '100%',
                     height: '40%',
-                    backgroundColor: '#ddd',
+                    backgroundColor: '#e9ecef',
                     padding: 5,
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
@@ -432,7 +432,7 @@ const ProductDetails = (props) => {
                     <View style={{flex: 2, justifyContent: 'center'}}>
                       <View
                         style={{
-                          backgroundColor: '#444',
+                          backgroundColor: '#394047',
                           justifyContent: 'center',
                           flexDirection: 'row',
                           alignSelf: 'center',
@@ -445,7 +445,7 @@ const ProductDetails = (props) => {
                       </View>
                       <View
                         style={{
-                          backgroundColor: '#444',
+                          backgroundColor: '#394047',
                           justifyContent: 'center',
                           flexDirection: 'column',
                           alignSelf: 'center',
@@ -480,17 +480,27 @@ const ProductDetails = (props) => {
         )}>
         <TriggeringView>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Card style={styles.card}>
-              <Card.Title
-                title="PREPAIRING & PACKAGING"
-                style={styles.cardTitle}
-              />
+            <View
+              style={{
+                padding: 7,
+                backgroundColor: '#e9ecef',
+                marginTop: 35,
+                paddingLeft: 15,
+                paddingRight: 10,
+              }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  paddingTop: 10,
+                }}>
+                INSIDE THE PACKAGE
+              </Text>
               <View
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
                   marginTop: 8,
-                  marginLeft: 25,
                 }}>
                 <View
                   style={{
@@ -498,6 +508,7 @@ const ProductDetails = (props) => {
                     backgroundColor: '#bf756c',
                     marginRight: 10,
                     borderRadius: 5,
+                    marginLeft: 10,
                   }}>
                   <Text style={{color: '#fff'}}>Steak</Text>
                 </View>
@@ -554,34 +565,36 @@ const ProductDetails = (props) => {
                   your purchant.{' '}
                 </Text>
               </View> */}
-
-              <Card.Title
-                title="PREPAIRING & PACKAGING"
-                style={{marginTop: 15}}
-              />
-              <Card.Content>
-                <Subheading style={{paddingVertical: 8}}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </Subheading>
-              </Card.Content>
-              <Card.Title
-                title="PREPAIRING & PACKAGING"
-                style={styles.cardTitle}
-              />
-              <Card.Content>
-                <Subheading style={{paddingVertical: 8}}>
-                  You can always write a note to the resturant while you process
-                  your purchant.{' '}
-                </Subheading>
-              </Card.Content>
-            </Card>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  paddingTop: 20,
+                }}>
+                PREPAIRING & PACKAGING
+              </Text>
+              <Text style={{marginTop: 5, marginLeft: 10}}>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
+              </Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  paddingTop: 20,
+                }}>
+                INGREDIENTS & ALLERGENS
+              </Text>
+              <Text style={{marginTop: 5, marginLeft: 15}}>
+                You can always write a note to the resturant while you process
+                your purchant
+              </Text>
+            </View>
             <View
               style={{
-                backgroundColor: '#F8F9FA',
+                backgroundColor: '#e9ecef',
                 marginTop: 25,
                 paddingVertical: 5,
               }}>
@@ -595,14 +608,14 @@ const ProductDetails = (props) => {
                 height: 250,
                 backgroundColor: '#ccc',
               }}></View>
-            <View style={{backgroundColor: '#F8F9FA', paddingVertical: 10}}>
+            <View style={{backgroundColor: '#e9ecef', paddingVertical: 10}}>
               <Text style={{fontSize: 16, fontWeight: '600', paddingLeft: 15}}>
                 Khalidia - Abu Dhabi
               </Text>
             </View>
             <ScrollView
               horizontal
-              backgroundColor="#F8F9FA"
+              backgroundColor="#e9ecef"
               showsHorizontalScrollIndicator={false}
               style={{marginTop: 25}}>
               <ProductCard
@@ -625,7 +638,7 @@ const ProductDetails = (props) => {
               />
             </ScrollView>
 
-            <View style={{marginTop: 25, backgroundColor: '#F8F9FA'}}>
+            <View style={{marginTop: 25, backgroundColor: '#e9ecef'}}>
               <Text
                 style={{
                   fontSize: 16,
@@ -844,7 +857,7 @@ const ProductDetails = (props) => {
             <View
               style={{
                 padding: 7,
-                backgroundColor: '#F8F9FA',
+                backgroundColor: '#e9ecef',
                 marginTop: 35,
                 paddingLeft: 15,
                 paddingRight: 10,
@@ -917,7 +930,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    backgroundColor: '#F8F9FA',
+    backgroundColor: '#e9ecef',
     marginTop: 35,
     paddingLeft: 5,
     paddingRight: 10,

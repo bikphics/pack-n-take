@@ -22,7 +22,7 @@ const OrderCard = ({onPress}) => {
             <Badge title="Rice" backgroundColor="#333" />
             <Badge title="Dal" backgroundColor="#222" />
             <Badge title="Chicken" backgroundColor="#111" />
-            <Badge title="Curd" backgroundColor="#444" />
+            <Badge title="Curd" backgroundColor="394047" />
           </View>
           <Text style={styles.datetime}>
             Purchased On <Text>28/7/2010, 90.00AM</Text>
