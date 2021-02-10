@@ -7,7 +7,7 @@ export const COLORS = {
   GOOGLE: '#db3236',
   PHONE: '#3cba54',
   FACEBOOK: '#4885ed',
-  APP_BODY: '#f8f9fa',
+  APP_BODY: '#e9ecef',
 };
 export const PT_COLORS = {
   primaryBlack: '#212529',
@@ -16,7 +16,7 @@ export const PT_COLORS = {
   secondaryDark: '#555d66',
   primaryGrey: '#6c757d',
   secondaryGrey: '#ced4da',
-  primaryLight: '#f8f9fa',
+  primaryLight: '#e9ecef',
   secondaryLight: '#e9ecef',
   splashColor: '#fff',
   bottomBarColor: '#fff',

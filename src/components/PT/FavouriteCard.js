@@ -74,7 +74,7 @@ const FavouriteCard = ({productImg, cardStyle, corner, onPress}) => {
                       marginRight: 10,
                       borderRadius: 5,
                     }}>
-                    <Text style={{color: '#F8F9FA', fontSize: 11}}>Steak</Text>
+                    <Text style={{color: '#e9ecef', fontSize: 11}}>Steak</Text>
                   </View>
                   <View
                     style={{
@@ -83,7 +83,7 @@ const FavouriteCard = ({productImg, cardStyle, corner, onPress}) => {
                       marginRight: 10,
                       borderRadius: 5,
                     }}>
-                    <Text style={{color: '#F8F9FA', fontSize: 11}}>Steak</Text>
+                    <Text style={{color: '#e9ecef', fontSize: 11}}>Steak</Text>
                   </View>
                   <View
                     style={{
@@ -92,7 +92,7 @@ const FavouriteCard = ({productImg, cardStyle, corner, onPress}) => {
                       marginRight: 10,
                       borderRadius: 5,
                     }}>
-                    <Text style={{color: '#F8F9FA', fontSize: 11}}>Steak</Text>
+                    <Text style={{color: '#e9ecef', fontSize: 11}}>Steak</Text>
                   </View>
                   <View
                     style={{
@@ -101,7 +101,7 @@ const FavouriteCard = ({productImg, cardStyle, corner, onPress}) => {
                       marginRight: 10,
                       borderRadius: 5,
                     }}>
-                    <Text style={{color: '#F8F9FA', fontSize: 11}}>Steak</Text>
+                    <Text style={{color: '#e9ecef', fontSize: 11}}>Steak</Text>
                   </View>
                 </View>
                 <Text
@@ -112,7 +112,7 @@ const FavouriteCard = ({productImg, cardStyle, corner, onPress}) => {
               <View style={{flex: 2, justifyContent: 'center'}}>
                 <View
                   style={{
-                    backgroundColor: '#444',
+                    backgroundColor: '#394047',
                     justifyContent: 'center',
                     flexDirection: 'row',
                     alignSelf: 'center',

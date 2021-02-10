@@ -68,7 +68,7 @@ const ProductCard = ({
                         marginRight: 10,
                         borderRadius: 5,
                       }}>
-                      <Text style={{color: '#F8F9FA', fontSize: 11}}>
+                      <Text style={{color: '#e9ecef', fontSize: 11}}>
                         Steak
                       </Text>
                     </View>
@@ -79,7 +79,7 @@ const ProductCard = ({
                         marginRight: 10,
                         borderRadius: 5,
                       }}>
-                      <Text style={{color: '#F8F9FA', fontSize: 11}}>
+                      <Text style={{color: '#e9ecef', fontSize: 11}}>
                         Steak
                       </Text>
                     </View>
@@ -90,7 +90,7 @@ const ProductCard = ({
                         marginRight: 10,
                         borderRadius: 5,
                       }}>
-                      <Text style={{color: '#F8F9FA', fontSize: 11}}>
+                      <Text style={{color: '#e9ecef', fontSize: 11}}>
                         Steak
                       </Text>
                     </View>
@@ -101,7 +101,7 @@ const ProductCard = ({
                         marginRight: 10,
                         borderRadius: 5,
                       }}>
-                      <Text style={{color: '#F8F9FA', fontSize: 11}}>
+                      <Text style={{color: '#e9ecef', fontSize: 11}}>
                         Steak
                       </Text>
                     </View>

@@ -55,26 +55,26 @@ export const registerUser = (userData) => async (dispatch) => {
   }
 };
 
-export const dispatchAction = (type, payload) => async (dispatch) => {
-  try {
-    console.log('type', `${type}_REQUEST`);
-    dispatch({type: `${type}_REQUEST`});
-    const {data} = await axios.post(
-      'https://www.packntake.com/api/auth/register',
-      payload,
-    );
-    console.log('Data2===', data);
-    if (data) {
-      dispatch({type: `${type}_SUCCESS`, payload: data});
-    }
-  } catch (error) {
-    console.log('Error===', error);
-    dispatch({
-      type: {type: `${type}_ERROR`},
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+// export const dispatchAction = (type, payload) => async (dispatch) => {
+//   try {
+//     console.log('type', `${type}_REQUEST`);
+//     dispatch({type: `${type}_REQUEST`});
+//     const {data} = await axios.post(
+//       'https://www.packntake.com/api/auth/register',
+//       payload,
+//     );
+//     console.log('Data2===', data);
+//     if (data) {
+//       dispatch({type: `${type}_SUCCESS`, payload: data});
+//     }
+//   } catch (error) {
+//     console.log('Error===', error);
+//     dispatch({
+//       type: {type: `${type}_ERROR`},
+//       payload:
+//         error.response && error.response.data.message
+//           ? error.response.data.message
+//           : error.message,
+//     });
+//   }
+// };

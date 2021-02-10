@@ -40,7 +40,7 @@ const StoreProductCard = ({
             style={{
               width: '100%',
               height: '42%',
-              backgroundColor: '#ddd',
+              backgroundColor: '#e9ecef',
               padding: 5,
               borderTopLeftRadius: 20,
               borderTopRightRadius: 20,
@@ -48,7 +48,7 @@ const StoreProductCard = ({
             }}>
             <View
               style={{
-                backgroundColor: '#333',
+                backgroundColor: '#394047',
                 padding: 8,
                 borderRadius: 20,
                 position: 'absolute',
@@ -122,7 +122,7 @@ const StoreProductCard = ({
                 <View style={{flex: 2, justifyContent: 'center'}}>
                   <View
                     style={{
-                      backgroundColor: '#444',
+                      backgroundColor: '#394047',
                       justifyContent: 'center',
                       flexDirection: 'row',
                       alignSelf: 'center',
@@ -135,7 +135,7 @@ const StoreProductCard = ({
                   </View>
                   <View
                     style={{
-                      backgroundColor: '#444',
+                      backgroundColor: '#394047',
                       justifyContent: 'center',
                       flexDirection: 'column',
                       alignSelf: 'center',

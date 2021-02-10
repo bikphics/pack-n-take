@@ -7,7 +7,7 @@ import {
   REGISTER_ERROR,
 } from '../constants';
 
-export const loginUser = (state = {user: {}}) => {
+export const loginUser = (state = {user: {}},action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return {loading: true, user: {}};

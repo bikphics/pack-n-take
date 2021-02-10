@@ -63,7 +63,7 @@ const PreveiousOrderDetails = (props) => {
                       justifyContent: 'center',
                       marginTop: 4,
                     }}>
-                    <Text style={{color: '#F8F9FA'}}>1x</Text>
+                    <Text style={{color: '#e9ecef'}}>1x</Text>
                   </View>
                 )}
                 style={{

@@ -117,7 +117,7 @@ const OrderBooking = (props) => {
 
                         <TouchableOpacity
                           style={{
-                            borderColor: '#444',
+                            borderColor: '#394047',
                             marginHorizontal: 8,
                             borderRadius: 5,
                             padding: 5,
@@ -166,7 +166,7 @@ const OrderBooking = (props) => {
                         }}>
                         <TouchableOpacity
                           style={{
-                            borderColor: '#444',
+                            borderColor: '#394047',
                             paddingVertical: 5,
                             width: 160,
                             marginHorizontal: 8,
@@ -180,7 +180,7 @@ const OrderBooking = (props) => {
                         <TouchableOpacity
                           style={{
                             color: '#ddd',
-                            backgroundColor: '#444',
+                            backgroundColor: '#394047',
                             textAlign: 'center',
                             paddingVertical: 5,
                             width: 160,
