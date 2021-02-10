@@ -13,7 +13,9 @@ const Discover = (props) => {
   useEffect(() => {
     axios.get('https://www.packntake.com/api/restaurants').then((response) => {
       setItems(response.data.data);
-    });
+    }).catch(err => {
+      console.log(`ERROR`, err);
+    })
   });
 
   return (
