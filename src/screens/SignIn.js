@@ -11,10 +11,12 @@ import {PT_COLORS} from '../config';
 import {useAppContext} from '../config/AppContext';
 
 import {Formik, Field} from 'formik';
-import { loginUser } from '../redux/actions/authAction'
+import {loginUser} from '../redux/actions/authAction';
 
 import * as yup from 'yup';
 import {useDispatch, useSelector} from 'react-redux';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const signInValidationSchema = yup.object().shape({
   useremail: yup
@@ -41,10 +43,25 @@ const SignIn = (props) => {
   const userLogin = useSelector((state) => state.loginUser);
   const {loading, error, user} = userLogin;
 
-  useEffect(()=>{
-    console.log("userLogin===",userLogin);
-  },[userLogin])
+  useEffect(() => {
+    console.log('userLogin===', userLogin);
+  }, [userLogin]);
 
+
+  const storeData = async () => {
+    try {
+      console.log("coming");
+      await AsyncStorage.setItem('@token', user.access_token);
+      await AsyncStorage.setItem('@user', JSON.stringify(user));
+      
+      login()
+     
+    } catch (e) {
+      console.log('Errrrr', e);
+    }
+  };
+
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -68,6 +85,10 @@ const SignIn = (props) => {
             }}
             onSubmit={(values) => {
               dispatch(loginUser(values));
+              if (user.UserId) {
+                console.log('exits', user.access_token);
+                storeData()
+              }
             }}>
             {({handleSubmit, isValid, values}) => (
               <>

@@ -5,13 +5,18 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
+  GET_LOGGIN_IN_USER_SUCCESS,
+  GET_LOGGIN_IN_USER_REQUEST,
+  GET_LOGGIN_IN_USER_ERROR
 } from '../constants';
 
 import axios from 'axios';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export const loginUser = (userData) => async (dispatch) => {
   try {
     dispatch({type: LOGIN_REQUEST});
+
     const {data} = await axios.post(
       'https://www.packntake.com/api/auth/login',
       userData,
@@ -54,6 +59,29 @@ export const registerUser = (userData) => async (dispatch) => {
     });
   }
 };
+
+
+export const getLoggedInUser = () => async (dispatch) => {
+  try {
+    dispatch({type: GET_LOGGIN_IN_USER_REQUEST});
+    
+    const user = await AsyncStorage.getItem('@user');
+    if (user) {
+      dispatch({type: GET_LOGGIN_IN_USER_SUCCESS, payload: user});
+    }
+  } catch (error) {
+    console.log('Error===', error);
+    dispatch({
+      type: GET_LOGGIN_IN_USER_ERROR,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+}
+
+
 
 // export const dispatchAction = (type, payload) => async (dispatch) => {
 //   try {

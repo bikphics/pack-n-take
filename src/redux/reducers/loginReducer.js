@@ -5,6 +5,9 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
+  GET_LOGGIN_IN_USER_SUCCESS,
+  GET_LOGGIN_IN_USER_REQUEST,
+  GET_LOGGIN_IN_USER_ERROR
 } from '../constants';
 
 export const loginUser = (state = {user: {}},action) => {
@@ -38,6 +41,28 @@ export const registerUser = (state = {user: {}}, action) => {
         user: action.payload,
       };
     case REGISTER_ERROR:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+
+
+export const getLoggedInUser = (state = {user: {}}, action) => {
+  switch (action.type) {
+    case GET_LOGGIN_IN_USER_REQUEST:
+      return {loading: true, user: {}};
+
+    case GET_LOGGIN_IN_USER_SUCCESS:
+      return {
+        loading: false,
+        user: action.payload,
+      };
+    case GET_LOGGIN_IN_USER_ERROR:
       return {
         loading: false,
         error: action.payload,

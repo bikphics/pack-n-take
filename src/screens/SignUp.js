@@ -19,6 +19,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {registerUser} from '../redux/actions/authAction';
 
+
 const signUpValidationSchema = yup.object().shape({
   username: yup
     .string()
@@ -55,6 +56,11 @@ const SignUp = (props) => {
   useEffect(() => {
     console.log('userRegister===', userRegister);
   }, [userRegister]);
+
+
+  
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container} ß>
@@ -82,6 +88,11 @@ const SignUp = (props) => {
             onSubmit={(values) => {
               console.log('values', values);
               dispatch(registerUser(values));
+
+              if(user.UserId) {
+                console.log("exits", user.access_token);
+              login()
+              }
             }}>
             {({handleSubmit, isValid, values}) => (
               <>

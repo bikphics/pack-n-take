@@ -6,24 +6,65 @@ import {Title, Button, Appbar} from 'react-native-paper';
 import {DISH_IMG} from '../assets';
 import {Header, ProductCard} from '../components';
 import {PT_COLORS} from '../config';
+import AsyncStorage from '@react-native-community/async-storage';
+import {getLoggedInUser} from '../redux/actions/authAction';
 
+import {getAllResturants} from '../redux/actions/restaurantAction';
+
+
+import {useDispatch, useSelector} from 'react-redux';
 const Discover = (props) => {
   const [items, setItems] = useState([]);
+  const [userLoggedIn, setUserLoggedIn] = useState({});
+
+
+
+  const dispatch = useDispatch();
+
+  // Select auth getLoggedInUser
+  const resultUser = useSelector((state) => state.getLoggedInUser);
+  const {loading, error, user} = resultUser;
+
+
+  // Select getLoggedInUser state
+`  // const resultRestaturants = useSelector((state) => state.getLoggedInUser);
+  // const {loading, error, restaurants} = resultRestaturants;`
 
   useEffect(() => {
-    axios.get('https://www.packntake.com/api/restaurants').then((response) => {
-      setItems(response.data.data);
-    }).catch(err => {
-      console.log(`ERROR`, err);
-    })
-  });
+    dispatch(getLoggedInUser());
+    setUserLoggedIn(user ? JSON.parse(user) : {})
+    // console.log("auth user", userLoggedIn ? userLoggedIn: {});
+
+
+    // dispatch(getAllResturants());
+ 
+
+  }, [dispatch]);
+
+
+
+
+
+  const getAuthData = async () => {
+    try {
+      console.log("coming");
+      // const token = await AsyncStorage.getItem('@token', user.access_token);
+      const user = await AsyncStorage.getItem('@user', JSON.stringify(user));
+      
+      console.log("discover", user);
+     
+    } catch (e) {
+      console.log('Errrrr', e);
+    }
+  };
+
 
   return (
     <>
       <Header title="Khalidya, Abu Dhabi" />
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1}}>
-          {items.length > 0 ? (
+          {/* {items.length > 0 ? ( */}
             <ScrollView showsVerticalScrollIndicator={false}>
               <View
                 style={{
@@ -43,14 +84,14 @@ const Discover = (props) => {
                 </Button>
               </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {items.map((item, index) => (
+                {/* {items.map((item, index) => (
                   <ProductCard
                     key={item.RestaurantSlug}
                     productImg={{uri: item.RestaurantImage}}
                     restaurantName={item.RetaurantName}
                     logoImg={{uri: item.RetaurantLogo}}
                   />
-                ))}
+                ))} */}
                 <ProductCard
                   corner
                   onPress={() =>
@@ -108,17 +149,18 @@ const Discover = (props) => {
                 <ProductCard corner />
               </ScrollView>
             </ScrollView>
-          ) : (
-            <View style={styles.activityIndicatorWrapper}>
-              <ActivityIndicator size="large" color={PT_COLORS.primaryBlack} />
-            </View>
-          )}
+      
         </View>
       </SafeAreaView>
     </>
   );
 };
 
+    // ) : (
+          //   <View style={styles.activityIndicatorWrapper}>
+          //     <ActivityIndicator size="large" color={PT_COLORS.primaryBlack} />
+          //   </View>
+          // )}
 const styles = StyleSheet.create({
   activityIndicatorWrapper: {
     flex: 1,
