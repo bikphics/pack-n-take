@@ -10,18 +10,18 @@ import {PT_COLORS} from '../config';
 const Discover = (props) => {
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    axios.get('https://www.packntake.com/api/restaurants').then((response) => {
-      setItems(response.data.data);
-    });
-  });
+  // useEffect(() => {
+  //   axios.get('https://www.packntake.com/api/restaurants').then((response) => {
+  //     setItems(response.data.data);
+  //   });
+  // });
 
   return (
     <>
       <Header title="Khalidya, Abu Dhabi" />
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1}}>
-          {items.length > 0 ? (
+          {1 > 0 ? (
             <ScrollView showsVerticalScrollIndicator={false}>
               <View
                 style={{
@@ -41,14 +41,14 @@ const Discover = (props) => {
                 </Button>
               </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {items.map((item, index) => (
+                {/* {items.map((item, index) => (
                   <ProductCard
                     key={item.RestaurantSlug}
                     productImg={{uri: item.RestaurantImage}}
                     restaurantName={item.RetaurantName}
                     logoImg={{uri: item.RetaurantLogo}}
                   />
-                ))}
+                ))} */}
                 <ProductCard
                   corner
                   onPress={() =>
