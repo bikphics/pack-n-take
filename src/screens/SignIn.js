@@ -85,6 +85,7 @@ const SignIn = (props) => {
             }}
             onSubmit={(values) => {
               dispatch(loginUser(values));
+              
               if (user.UserId) {
                 console.log('exits', user.access_token);
                 storeData()

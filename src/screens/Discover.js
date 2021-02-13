@@ -27,19 +27,19 @@ const Discover = (props) => {
 
 
   // Select getLoggedInUser state
-`  // const resultRestaturants = useSelector((state) => state.getLoggedInUser);
+ // const resultRestaturants = useSelector((state) => state.getLoggedInUser);
   // const {loading, error, restaurants} = resultRestaturants;`
 
   useEffect(() => {
-    dispatch(getLoggedInUser());
-    setUserLoggedIn(user ? JSON.parse(user) : {})
+    // dispatch(getLoggedInUser());
+    // setUserLoggedIn(user ? JSON.parse(user) : {})
     // console.log("auth user", userLoggedIn ? userLoggedIn: {});
 
 
     // dispatch(getAllResturants());
  
 
-  }, [dispatch]);
+  }, []);
 
 
 
