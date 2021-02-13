@@ -16,9 +16,9 @@ import {Formik, Field} from 'formik';
 
 import * as yup from 'yup';
 import {useDispatch, useSelector} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {registerUser} from '../redux/actions/authAction';
-
 
 const signUpValidationSchema = yup.object().shape({
   username: yup
@@ -57,9 +57,18 @@ const SignUp = (props) => {
     console.log('userRegister===', userRegister);
   }, [userRegister]);
 
+  const storeData = async () => {
+    try {
+      console.log("storeData", user);
+      console.log('coming');
+      await AsyncStorage.setItem('@token', user.access_token);
+      await AsyncStorage.setItem('@user', JSON.stringify(user));
 
-  
-
+      login();
+    } catch (e) {
+      console.log('Errrrr', e);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -85,13 +94,14 @@ const SignUp = (props) => {
               userpassword: '',
               country: '',
             }}
-            onSubmit={(values) => {
+            onSubmit={async(values) => {
               console.log('values', values);
               dispatch(registerUser(values));
 
-              if(user.UserId) {
-                console.log("exits", user.access_token);
-              login()
+              console.log('user', user);
+              if (user.UserId) {
+                console.log('exits', user.access_token);
+                await storeData();
               }
             }}>
             {({handleSubmit, isValid, values}) => (

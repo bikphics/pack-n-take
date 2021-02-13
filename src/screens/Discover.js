@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {getLoggedInUser} from '../redux/actions/authAction';
 
 import {getAllResturants} from '../redux/actions/restaurantAction';
+import { useStore } from 'react-redux'
 
 import {useDispatch, useSelector} from 'react-redux';
 const Discover = (props) => {
@@ -19,6 +20,10 @@ const Discover = (props) => {
   const dispatch = useDispatch();
   // Select getLoggedInUser state
   const resultRestaturants = useSelector((state) => state.getAllRestaurants);
+  const store = useStore();
+  const user = store.getState().loginUser;
+  const loginUser = useSelector((state) => state.loginUser);
+  console.log("loginUser",user);
   const {loading, error, restaurants} = resultRestaturants;
   const URL = "https://www.packntake.com/api";
 
@@ -27,7 +32,8 @@ const Discover = (props) => {
     AsyncStorage.getItem('@user')
       .then((user) => {
         setUserLoggedIn(JSON.parse(user));
-         fetchDiscoverData(user.access_token)
+        console.log("discobver", userLoggedIn);
+        fetchData();
       })
       .catch((err) => {
         console.log(error);
@@ -35,7 +41,6 @@ const Discover = (props) => {
 
     console.log('resultRestaturants', resultRestaturants);
 
-    // fetchData();
 
     if(!loading) {
     console.log('restaurants', restaurants);

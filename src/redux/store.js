@@ -20,24 +20,48 @@ const reducer = combineReducers({
   getAllRestaurants: getAllResturants,
 });
 
-// const getAuthData = async () => {
-//   try {
-//     console.log('coming');
-//     // const token = await AsyncStorage.getItem('@token', user.access_token);
-//     const userData = await AsyncStorage.getItem('@user', JSON.stringify(user));
+const getAuthData = async () => {
+  try {
+    console.log('coming');
+    // const token = await AsyncStorage.getItem('@token', user.access_token);
+    const userData = await AsyncStorage.getItem('@user', JSON.stringify(user));
+    console.log('userData', userData);
+    return userData;
+  } catch (e) {
+    console.log('Errrrr', e);
+  }
+};
 
-//     if (user) {
-//       user = userData;
-//     }
 
-//     return null;
-//   } catch (e) {
-//     console.log('Errrrr', e);
-//   }
-// };
+// Action
+const setInit = (result) => {
+  return {
+    type: 'setInit',
+    uid: result,
+    username: result,
+  };
+};
+const getAsyncStorage = () => {
+  return (dispatch) => {
+    AsyncStorage.getItem('@user').then((result) => {
+      dispatch(setInit(result));
+    });
+  };
+};
+
+const getUser = () => {
+  // Define desired object
+
+  var user = {};
+  AsyncStorage.getItem('@user').then((res) => {
+    console.log(1111111111, res);
+    Object.assign(user, JSON.parse(res));
+  });
+  return user;
+};
 
 const initialState = {
-  // loginUserData: { user: user }
+  loginUser: {user: getUser()},
 };
 
 const middleware = [thunk];

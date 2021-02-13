@@ -47,21 +47,18 @@ const SignIn = (props) => {
     console.log('userLogin===', userLogin);
   }, [userLogin]);
 
-
   const storeData = async () => {
     try {
-      console.log("coming");
+      console.log('coming');
       await AsyncStorage.setItem('@token', user.access_token);
       await AsyncStorage.setItem('@user', JSON.stringify(user));
-      
-      login()
-     
+
+      login();
     } catch (e) {
       console.log('Errrrr', e);
     }
   };
 
-  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -83,12 +80,13 @@ const SignIn = (props) => {
               useremail: '',
               userpassword: '',
             }}
-            onSubmit={(values) => {
+            onSubmit={async(values) => {
               dispatch(loginUser(values));
-              
+
+              console.log('user', user);
               if (user.UserId) {
                 console.log('exits', user.access_token);
-                storeData()
+                await storeData();
               }
             }}>
             {({handleSubmit, isValid, values}) => (
