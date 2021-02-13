@@ -14,7 +14,7 @@ import {
       case FETCH_RESTAURENT_SUCCESS:
         return {
           loading: false,
-          user: action.payload,
+          restaurants: action.payload,
         };
       case FETCH_RESTAURENT_ERROR:
         return {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StatusBar} from 'react-native';
 import {useAppContext} from './config/AppContext';
 import {NavigationContainer} from '@react-navigation/native';
@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 const Router = () => {
   const {user, loading} = useAppContext();
+  const [userLoggedIn, setUserLoggedIn] = useState({});
 
 
   const authUser = async () => {
@@ -30,6 +31,19 @@ const Router = () => {
     }
   };
 
+  useEffect(() => {
+    AsyncStorage.getItem('@user').then(user => {
+      console.log(user);
+      setUserLoggedIn(user)
+    }).catch(err => {
+      console.log(error);
+    }, [userLoggedIn])
+
+
+
+    console.log("userLoggedIn", userLoggedIn);
+  })
+
   return (
     <AnimatedSplash
       translucent={false}
@@ -43,7 +57,7 @@ const Router = () => {
           backgroundColor={PT_COLORS.secondaryBlack}
           barStyle="light-content"
         />
-        {authUser ? <PrivateRoute /> : <PublicRoute />}
+        {userLoggedIn ? <PrivateRoute /> : <PublicRoute />}
       </NavigationContainer>
     </AnimatedSplash>
   );

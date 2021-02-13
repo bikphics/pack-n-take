@@ -12,11 +12,16 @@ import {
   TERMS_CONDITIONS,
   ORDER,
 } from '../assets';
+
+import AsyncStorage from '@react-native-community/async-storage';
+
+
 const More = (props) => {
   const {logout, handelExit} = useAppContext();
 
   async function handleLogout() {
     try {
+      await AsyncStorage.removeItem('@user')
       logout();
     } catch {
       alert('Failed to log out');

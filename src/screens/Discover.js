@@ -11,53 +11,55 @@ import {getLoggedInUser} from '../redux/actions/authAction';
 
 import {getAllResturants} from '../redux/actions/restaurantAction';
 
-
 import {useDispatch, useSelector} from 'react-redux';
 const Discover = (props) => {
   const [items, setItems] = useState([]);
   const [userLoggedIn, setUserLoggedIn] = useState({});
 
-
-
   const dispatch = useDispatch();
-
-  // Select auth getLoggedInUser
-  const resultUser = useSelector((state) => state.getLoggedInUser);
-  const {loading, error, user} = resultUser;
-
-
   // Select getLoggedInUser state
- // const resultRestaturants = useSelector((state) => state.getLoggedInUser);
-  // const {loading, error, restaurants} = resultRestaturants;`
+  const resultRestaturants = useSelector((state) => state.getAllRestaurants);
+  const {loading, error, restaurants} = resultRestaturants;
+  const URL = "https://www.packntake.com/api";
 
   useEffect(() => {
-    // dispatch(getLoggedInUser());
-    // setUserLoggedIn(user ? JSON.parse(user) : {})
-    // console.log("auth user", userLoggedIn ? userLoggedIn: {});
+    console.log("called");
+    AsyncStorage.getItem('@user')
+      .then((user) => {
+        setUserLoggedIn(JSON.parse(user));
+         fetchDiscoverData(user.access_token)
+      })
+      .catch((err) => {
+        console.log(error);
+      });
 
+    console.log('resultRestaturants', resultRestaturants);
 
-    // dispatch(getAllResturants());
- 
+    // fetchData();
 
+    if(!loading) {
+    console.log('restaurants', restaurants);
+    }
   }, []);
 
+  const fetchData = async () => {
+    console.log(userLoggedIn);
+    dispatch(getAllResturants(userLoggedIn.access_token));
 
-
-
-
-  const getAuthData = async () => {
-    try {
-      console.log("coming");
-      // const token = await AsyncStorage.getItem('@token', user.access_token);
-      const user = await AsyncStorage.getItem('@user', JSON.stringify(user));
-      
-      console.log("discover", user);
-     
-    } catch (e) {
-      console.log('Errrrr', e);
-    }
   };
 
+  const fetchDiscoverData = (access_token) => {
+    axios.get(`${URL}/discover`, {
+      params: {
+        token: access_token
+      }
+    })
+    .then( (response) => {
+      console.log("Response Datassss",response.data);
+    })
+  
+  }
+ 
 
   return (
     <>
@@ -65,26 +67,26 @@ const Discover = (props) => {
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1}}>
           {/* {items.length > 0 ? ( */}
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  margin: 5,
-                }}>
-                <Title>Near by</Title>
-                <Button
-                  labelStyle={{fontSize: 12}}
-                  onPress={() =>
-                    props.navigation.push('CategoryDetails', 'Near By')
-                  }
-                  color={PT_COLORS.primaryBlack}>
-                  {'More >'}
-                </Button>
-              </View>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {/* {items.map((item, index) => (
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                margin: 5,
+              }}>
+              <Title>Near by</Title>
+              <Button
+                labelStyle={{fontSize: 12}}
+                onPress={() =>
+                  props.navigation.push('CategoryDetails', 'Near By')
+                }
+                color={PT_COLORS.primaryBlack}>
+                {'More >'}
+              </Button>
+            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              {/* {items.map((item, index) => (
                   <ProductCard
                     key={item.RestaurantSlug}
                     productImg={{uri: item.RestaurantImage}}
@@ -92,75 +94,71 @@ const Discover = (props) => {
                     logoImg={{uri: item.RetaurantLogo}}
                   />
                 ))} */}
-                <ProductCard
-                  corner
-                  onPress={() =>
-                    props.navigation.push('ProductDetails', 'Product Details')
-                  }
-                />
-                <ProductCard corner />
-                <ProductCard corner />
-              </ScrollView>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  margin: 5,
-                }}>
-                <Title>Meals</Title>
-                <Button
-                  labelStyle={{fontSize: 12}}
-                  onPress={() =>
-                    props.navigation.push('CategoryDetails', 'Meals')
-                  }
-                  color={PT_COLORS.primaryBlack}>
-                  {'More >'}
-                </Button>
-              </View>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <ProductCard corner productImg={DISH_IMG} />
-                <ProductCard corner productImg={DISH_IMG} />
-                <ProductCard corner productImg={DISH_IMG} />
-              </ScrollView>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  margin: 5,
-                }}>
-                <Title>Collect For Diner</Title>
-                <Button
-                  labelStyle={{fontSize: 12}}
-                  onPress={() =>
-                    props.navigation.push(
-                      'CategoryDetails',
-                      'Collect For Diner',
-                    )
-                  }
-                  color={PT_COLORS.primaryBlack}>
-                  {'More >'}
-                </Button>
-              </View>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <ProductCard corner />
-                <ProductCard corner />
-                <ProductCard corner />
-              </ScrollView>
+              <ProductCard
+                corner
+                onPress={() =>
+                  props.navigation.push('ProductDetails', 'Product Details')
+                }
+              />
+              <ProductCard corner />
+              <ProductCard corner />
             </ScrollView>
-      
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                margin: 5,
+              }}>
+              <Title>Meals</Title>
+              <Button
+                labelStyle={{fontSize: 12}}
+                onPress={() =>
+                  props.navigation.push('CategoryDetails', 'Meals')
+                }
+                color={PT_COLORS.primaryBlack}>
+                {'More >'}
+              </Button>
+            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <ProductCard corner productImg={DISH_IMG} />
+              <ProductCard corner productImg={DISH_IMG} />
+              <ProductCard corner productImg={DISH_IMG} />
+            </ScrollView>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                margin: 5,
+              }}>
+              <Title>Collect For Diner</Title>
+              <Button
+                labelStyle={{fontSize: 12}}
+                onPress={() =>
+                  props.navigation.push('CategoryDetails', 'Collect For Diner')
+                }
+                color={PT_COLORS.primaryBlack}>
+                {'More >'}
+              </Button>
+            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <ProductCard corner />
+              <ProductCard corner />
+              <ProductCard corner />
+            </ScrollView>
+          </ScrollView>
         </View>
       </SafeAreaView>
     </>
   );
 };
 
-    // ) : (
-          //   <View style={styles.activityIndicatorWrapper}>
-          //     <ActivityIndicator size="large" color={PT_COLORS.primaryBlack} />
-          //   </View>
-          // )}
+// ) : (
+//   <View style={styles.activityIndicatorWrapper}>
+//     <ActivityIndicator size="large" color={PT_COLORS.primaryBlack} />
+//   </View>
+// )}
 const styles = StyleSheet.create({
   activityIndicatorWrapper: {
     flex: 1,

@@ -12,9 +12,9 @@ import {
       const {data} = await axios.get(
         `https://www.packntake.com/api/restaurants?token=${token}`
       );
-      console.log('Data===', data);
-      if (data) {
-        dispatch({type: FETCH_RESTAURENT_SUCCESS, payload: data});
+      console.log('Data===', data.data);
+      if (data.data) {
+        dispatch({type: FETCH_RESTAURENT_SUCCESS, payload: data.data});
       }
     } catch (error) {
       console.log('Error===', error.response);
