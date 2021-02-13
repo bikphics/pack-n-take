@@ -19,6 +19,8 @@ const reducer = (state, action) => {
       return state;
   }
 };
+
+
 export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUserDetails] = useReducer(reducer, null);

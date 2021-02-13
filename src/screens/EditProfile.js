@@ -1,15 +1,43 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Button, Card} from 'react-native-paper';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native';
 import {PT_COLORS} from '../config';
 import {Header, PTTextInput} from '../components';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const EditProfile = (props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState({});
+
+
+  const authUser = async () => {
+    try {
+      console.log("coming");
+      // const token = await AsyncStorage.getItem('@token', user.access_token);
+       const userLogin = await AsyncStorage.getItem('@user', JSON.stringify(user));
+  
+       console.log("u", userLogin);
+      if(userLogin) {
+        setUser(userLogin)
+      }
+      setUser({})
+
+    } catch (e) {
+      console.log('Errrrr', e);
+    }
+  };
+
+  useEffect(() => {
+    authUser
+    console.log("auth", user);
+  }, [authUser]);
+
+
+
   return (
     <>
       <Header

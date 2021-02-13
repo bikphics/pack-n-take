@@ -245,7 +245,7 @@ const ProductDetails = (props) => {
               style={{zIndex: 5}}></Ionicons>
           </View>
           <Animated.View style={{opacity}}>
-            <Text style={styles.headerTitle}>STICKYrr HEADER</Text>
+            <Text style={styles.headerTitle}>Steak House-Khalidya</Text>
           </Animated.View>
           <View>
             <Image

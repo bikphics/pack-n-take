@@ -7,9 +7,29 @@ import PublicRoute from './PublicRoute';
 import AnimatedSplash from 'react-native-animated-splash-screen';
 import {PT_COLORS} from './config';
 import {LOGO} from './assets';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Router = () => {
   const {user, loading} = useAppContext();
+
+
+  const authUser = async () => {
+    try {
+      console.log("coming");
+      // const token = await AsyncStorage.getItem('@token', user.access_token);
+       const user = await AsyncStorage.getItem('@user', JSON.stringify(user));
+      
+       console.log("router", user);
+       if(user.UserId) {
+          return user;
+       }
+     
+       return null;
+    } catch (e) {
+      console.log('Errrrr', e);
+    }
+  };
+
   return (
     <AnimatedSplash
       translucent={false}
@@ -23,7 +43,7 @@ const Router = () => {
           backgroundColor={PT_COLORS.secondaryBlack}
           barStyle="light-content"
         />
-        {user ? <PrivateRoute /> : <PublicRoute />}
+        {authUser ? <PrivateRoute /> : <PublicRoute />}
       </NavigationContainer>
     </AnimatedSplash>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {PT_COLORS} from '../../config';
-const PTTextInput = ({label, style, labelWrapperStyle}) => {
+const PTTextInput = ({label, style, labelWrapperStyle, setData, type, checkMethod}) => {
   return (
     <View style={{...styles.wrapper, ...style}}>
       <View style={{...styles.labelWrapper, ...labelWrapperStyle}}>
