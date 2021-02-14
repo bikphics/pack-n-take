@@ -35,6 +35,7 @@ const FAVOURITES = require('./light-icons/favourites.png');
 const PEN = require('./light-icons/edit.png');
 const HOTEL = require('./light-icons/hotel.png');
 const INSIDE_PACKAGE = require('./light-icons/inside-package.png');
+const CLOSE = require('./light-icons/close.png');
 export {
   WELCOME_IMG,
   LOGO,
@@ -66,4 +67,5 @@ export {
   PEN,
   HOTEL,
   INSIDE_PACKAGE,
+  CLOSE,
 };
