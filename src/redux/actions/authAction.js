@@ -30,12 +30,10 @@ export const loginUser = (userData) => async (dispatch) => {
       'https://www.packntake.com/api/auth/login',
       userData,
     );
-    console.log('Data===', data);
     if (data) {
       dispatch({type: LOGIN_SUCCESS, payload: data});
     }
   } catch (error) {
-    console.log('Error===', error);
     dispatch({
       type: LOGIN_ERROR,
       payload:
@@ -53,7 +51,6 @@ export const registerUser = (userData) => async (dispatch) => {
       'https://www.packntake.com/api/auth/register',
       userData,
     );
-    console.log('Data===', data);
     if (data) {
       dispatch({type: REGISTER_SUCCESS, payload: data});
     }
@@ -117,19 +114,19 @@ export const updateUserAction = (userData, token) => async (dispatch) => {
 
 export const changePasswordAction = (userData, token) => async (dispatch) => {
   try {
-    dispatch({type: UPDATE_USER_REQUEST});
+    dispatch({type: CHANGE_PASSWORD_USER_REQUEST});
     const {data} = await axios.put(
       `https://www.packntake.com/api/auth/updateuserpassword?token=${token}`,
       userData,
     );
     console.log('Data===', data);
     if (data) {
-      dispatch({type: UPDATE_USER_SUCCESS, payload: data});
+      dispatch({type: CHANGE_PASSWORD_USER_SUCCESS, payload: data});
     }
   } catch (error) {
     console.log('Error===', error.response);
     dispatch({
-      type: UPDATE_USER_ERROR,
+      type: CHANGE_PASSWORD_USER_ERROR,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

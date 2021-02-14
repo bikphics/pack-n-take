@@ -69,7 +69,11 @@ const ChangePassword = (props) => {
 
 
   useEffect(() => {
-    dispatch(getUserAction(userData.access_token))
+    console.log("userData", userData);
+ 
+    if(userData.hasOwnProperty('acceees_token')) {
+      dispatch(getUserAction(userData.access_token))
+    }
 
     if(!loadingUser) {
       console.log('user-----change password', user);
@@ -116,18 +120,21 @@ const ChangePassword = (props) => {
                   
                   dispatch(changePasswordAction(values, userData.access_token));
 
+                  if(!loadingChangePassword) {
                   console.log('updateUser', changeUser);
-                  if (changeUser.UserId) {
+
+                    if (changeUser.hasOwnProperty('UserId')) {
                       
-                    setTimeout(() => {
+                      setTimeout(() => {
+                      setClick(false)
+  
+                        props.navigation.navigate('Settings')
+                      }, 4000);
+  
+                    } 
                     setClick(false)
-
-                      props.navigation.navigate('Settings')
-                    }, 4000);
-
-                  } 
-                  setClick(false)
-                  console.log('val', values);
+                    console.log('val', values);
+                  }
                 }}>
                 {({handleSubmit, isValid, values}) => (
                   <>

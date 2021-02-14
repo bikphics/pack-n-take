@@ -13,33 +13,33 @@ const Router = () => {
   const {user, loading} = useAppContext();
   const [userLoggedIn, setUserLoggedIn] = useState({});
 
-
   const authUser = async () => {
     try {
-      console.log("coming");
       // const token = await AsyncStorage.getItem('@token', user.access_token);
-       const user = await AsyncStorage.getItem('@user', JSON.stringify(user));
-      
-       console.log("router", user);
-       if(user.UserId) {
-          return user;
-       }
-     
-       return null;
+      const user = await AsyncStorage.getItem('@user', JSON.stringify(user));
+
+      if (user.UserId) {
+        return user;
+      }
+
+      return null;
     } catch (e) {
       console.log('Errrrr', e);
     }
   };
 
   useEffect(() => {
-    AsyncStorage.getItem('@user').then(user => {
-      setUserLoggedIn(user)
-
-      console.log("userLoggedIn", userLoggedIn);
-    }).catch(err => {
-      console.log(error);
-    }, [userLoggedIn])
-  })
+    AsyncStorage.getItem('@user')
+      .then((user) => {
+        setUserLoggedIn(user);
+      })
+      .catch(
+        (err) => {
+          console.log(error);
+        },
+        [userLoggedIn],
+      );
+  });
 
   return (
     <AnimatedSplash

@@ -49,12 +49,9 @@ const SignIn = (props) => {
 
   const storeData = async () => {
     try {
-
       login();
       console.log('coming', user);
       await AsyncStorage.setItem('@user', JSON.stringify(user));
-
-
     } catch (e) {
       console.log('Errrrr', e);
     }
@@ -81,7 +78,7 @@ const SignIn = (props) => {
               useremail: '',
               userpassword: '',
             }}
-            onSubmit={async(values) => {
+            onSubmit={async (values) => {
               dispatch(loginUser(values));
 
               if(!loading) {

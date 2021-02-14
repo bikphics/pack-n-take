@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {width} from '../../config/Style';
-const StoreProductCard = ({
+const ResturantsCard = ({
   productImg,
   cardStyle,
   corner,
@@ -26,7 +26,7 @@ const StoreProductCard = ({
       style={{...styles.cardStyle, ...cardStyle}}
       onPress={onPress}>
       <ImageBackground
-        source={{uri: itemDetails.PackageImage}}
+        source={{uri: itemDetails.RestaurantImage}}
         style={styles.image}>
         <View
           style={{width: '100%', height: 370, backgroundColor: '#00000070'}}>
@@ -166,7 +166,7 @@ const StoreProductCard = ({
                       fontWeight: 'bold',
                       marginBottom: 4,
                     }}>
-                    Steak House-Khalidya
+                    {itemDetails.RetaurantName}
                   </Text>
                 </View>
                 <View style={{paddingTop: 2, paddingLeft: 10}}>
@@ -175,10 +175,7 @@ const StoreProductCard = ({
                       color: '#000',
                       fontSize: 14,
                     }}>
-                    Lorem ipsum, or lipsum as it is sometimes known, is dummy
-                    text used in laying out print, graphic or web designs. The
-                    passage is attributed to an unknown typesetter in the 15th
-                    passage is attributed to an unknown typesetter in the 15th
+                    {itemDetails.RestaurantDescription}
                   </Text>
                 </View>
               </View>
@@ -190,7 +187,7 @@ const StoreProductCard = ({
   );
 };
 
-export default StoreProductCard;
+export default ResturantsCard;
 
 const styles = StyleSheet.create({
   image: {
