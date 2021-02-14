@@ -41,7 +41,6 @@ const ProductDetailed = (props) => {
 
   const backAction = () => {
     modalClose();
-    console.log('Back Button pressed');
     return true;
   };
 
@@ -446,7 +445,7 @@ const ProductDetailed = (props) => {
               horizontal
               showsHorizontalScrollIndicator={false}
               style={{marginTop: 25}}>
-              <ProductCard
+              {/* <ProductCard
                 corner
                 onPress={() =>
                   props.navigation.push('ProductDetails', 'Product Details')
@@ -463,7 +462,7 @@ const ProductDetailed = (props) => {
                 onPress={() =>
                   props.navigation.push('ProductDetails', 'Product Details')
                 }
-              />
+              /> */}
             </ScrollView>
             {/* Store Location Card */}
             <Card style={styles.card}>

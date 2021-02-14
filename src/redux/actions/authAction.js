@@ -21,12 +21,10 @@ export const loginUser = (userData) => async (dispatch) => {
       'https://www.packntake.com/api/auth/login',
       userData,
     );
-    console.log('Data===', data);
     if (data) {
       dispatch({type: LOGIN_SUCCESS, payload: data});
     }
   } catch (error) {
-    console.log('Error===', error);
     dispatch({
       type: LOGIN_ERROR,
       payload:
@@ -44,7 +42,6 @@ export const registerUser = (userData) => async (dispatch) => {
       'https://www.packntake.com/api/auth/register',
       userData,
     );
-    console.log('Data===', data);
     if (data) {
       dispatch({type: REGISTER_SUCCESS, payload: data});
     }

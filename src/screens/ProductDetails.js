@@ -32,8 +32,10 @@ const ProductDetails = (props) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const scroll = useRef(new Animated.Value(0)).current;
+  const itemId = props.route.params.itemId;
 
   useEffect(() => {
+    console.log(itemId);
     BackHandler.addEventListener('hardwareBackPress', backAction);
     return () => BackHandler.removeEventListener();
   }, []);
@@ -713,7 +715,7 @@ const ProductDetails = (props) => {
             backgroundColor="#e9ecef"
             showsHorizontalScrollIndicator={false}
             style={{marginTop: 25}}>
-            <ProductCard
+            {/* <ProductCard
               corner
               onPress={() =>
                 props.navigation.push('ProductDetails', 'Product Details')
@@ -730,7 +732,7 @@ const ProductDetails = (props) => {
               onPress={() =>
                 props.navigation.push('ProductDetails', 'Product Details')
               }
-            />
+            /> */}
           </ScrollView>
 
           <View style={{marginTop: 25, backgroundColor: '#e9ecef'}}>

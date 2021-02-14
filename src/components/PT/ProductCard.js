@@ -22,6 +22,7 @@ const ProductCard = ({
   restaurantName,
   logoImg,
   isStoreCard,
+  itemDetails,
 }) => {
   const logoStyle = corner
     ? {justifyContent: 'flex-start', alignItems: 'flex-start', padding: 10}
@@ -34,33 +35,34 @@ const ProductCard = ({
     <TouchableOpacity
       style={{...styles.cardStyle, ...cardStyle, ...cardMargin}}
       onPress={onPress}>
-      <ImageBackground source={productImg || WELCOME_IMG} style={styles.image}>
+      <ImageBackground
+        source={{uri: itemDetails.PackageImage}}
+        style={styles.image}>
         <View style={styles.cardWrapper}>
           <View
             style={{
               ...styles.fdRow,
               ...logoStyle,
             }}>
-            {!logoImg ? (
-              <Image source={LOGO} style={{borderRadius: 40, ...logoSize}} />
-            ) : (
-              <SvgUri width="100%" height="100%" logoImg />
-            )}
+            <Image
+              source={{uri: itemDetails.RetaurantLogo}}
+              style={{borderRadius: 40, ...logoSize}}
+            />
           </View>
           <View style={styles.contentWrapper}>
             <View style={styles.logoWrapper}>
               <AntDesign name="hearto" color={'#ddd'} size={20} />
             </View>
-            {!isStoreCard ? (
-              <View style={{flex: 1, flexDirection: 'row'}}>
-                <View style={{paddingTop: 20, paddingLeft: 10, flex: 4}}>
-                  <Text style={styles.cardTitle}>
-                    {restaurantName ? restaurantName : 'Steakhouse Khalidia'}
-                  </Text>
-                  <Text style={{color: '#000', fontSize: 13}}>
-                    Inside The Package
-                  </Text>
-                  <View style={{flexDirection: 'row', marginTop: 5}}>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <View style={{paddingTop: 20, paddingLeft: 10, flex: 4}}>
+                <Text style={styles.cardTitle}>
+                  {itemDetails.RetaurantName}
+                </Text>
+                <Text style={{color: '#000', fontSize: 13}}>
+                  Inside The Package
+                </Text>
+                <View style={{flexDirection: 'row', marginTop: 5}}>
+                  {itemDetails.InsideThePackge.map((product, index) => (
                     <View
                       style={{
                         padding: 5,
@@ -72,84 +74,31 @@ const ProductCard = ({
                         Steak
                       </Text>
                     </View>
-                    <View
-                      style={{
-                        padding: 5,
-                        backgroundColor: '#F4AB2E',
-                        marginRight: 10,
-                        borderRadius: 5,
-                      }}>
-                      <Text style={{color: '#e9ecef', fontSize: 11}}>
-                        Steak
-                      </Text>
-                    </View>
-                    <View
-                      style={{
-                        padding: 5,
-                        backgroundColor: '#56733C',
-                        marginRight: 10,
-                        borderRadius: 5,
-                      }}>
-                      <Text style={{color: '#e9ecef', fontSize: 11}}>
-                        Steak
-                      </Text>
-                    </View>
-                    <View
-                      style={{
-                        padding: 5,
-                        backgroundColor: '#56733C',
-                        marginRight: 10,
-                        borderRadius: 5,
-                      }}>
-                      <Text style={{color: '#e9ecef', fontSize: 11}}>
-                        Steak
-                      </Text>
-                    </View>
-                  </View>
-                  <Text style={styles.noteStyle}>Collect directly-250m</Text>
+                  ))}
                 </View>
-                <View style={styles.btnWrapper}>
-                  <View style={styles.itemLeftBtn}>
-                    <Text style={styles.itemLeftBtnText}>5+ Left</Text>
-                  </View>
-                  {!priceTag && (
-                    <View style={styles.priceBtn}>
-                      <View>
-                        <Text style={styles.priceBtnSubtitle}>AED 40.00</Text>
-                      </View>
-                      <View>
-                        <Text style={styles.priceBtnTitle}>AED 20.00</Text>
-                      </View>
-                    </View>
-                  )}
-                </View>
+
+                <Text style={styles.noteStyle}>Collect directly-250m</Text>
               </View>
-            ) : (
-              <View>
-                <View style={{paddingTop: 20, paddingLeft: 10}}>
-                  <Text
-                    style={{
-                      color: '#000',
-                      fontSize: 16,
-                      fontWeight: 'bold',
-                      marginBottom: 4,
-                    }}>
-                    Steak House-Khalidya
+              <View style={styles.btnWrapper}>
+                <View style={styles.itemLeftBtn}>
+                  <Text style={styles.itemLeftBtnText}>
+                    {itemDetails.PackageQuantity} Left
                   </Text>
                 </View>
-                <View style={{paddingTop: 2, paddingLeft: 10}}>
-                  <Text
-                    style={{
-                      color: '#000',
-                      fontSize: 14,
-                    }}>
-                    Lorem ipsum, or lipsum as it is sometimes known, is dummy
-                    text used in laying out print, graphic or web designs. The
-                    passage is attributed to an unknown typesetter in the 15th
-                  </Text>
+                <View style={styles.priceBtn}>
+                  <View>
+                    <Text style={styles.priceBtnSubtitle}>
+                      AED {itemDetails.PackageFPrice}
+                    </Text>
+                  </View>
+                  <View>
+                    <Text style={styles.priceBtnTitle}>
+                      AED {itemDetails.PackageSPrice}
+                    </Text>
+                  </View>
                 </View>
               </View>
-            )}
+            </View>
           </View>
         </View>
       </ImageBackground>

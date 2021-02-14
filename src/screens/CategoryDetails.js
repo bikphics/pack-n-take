@@ -23,14 +23,14 @@ const CategoryDetails = (props) => {
       <SafeAreaView>
         <View style={{flex: 1, paddingHorizontal: 10}}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <ProductCard
+            {/* <ProductCard
               cardStyle={{width: width - 30}}
               productImg={DISH_IMG}
             />
             <ProductCard cardStyle={{width: width - 30}} />
             <ProductCard cardStyle={{width: width - 30}} />
             <ProductCard cardStyle={{width: width - 30}} />
-            <ProductCard cardStyle={{width: width - 30}} />
+            <ProductCard cardStyle={{width: width - 30}} /> */}
           </ScrollView>
         </View>
       </SafeAreaView>

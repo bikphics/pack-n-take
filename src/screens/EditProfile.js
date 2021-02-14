@@ -13,30 +13,27 @@ const EditProfile = (props) => {
   const [password, setPassword] = useState('');
   const [user, setUser] = useState({});
 
-
   const authUser = async () => {
     try {
-      console.log("coming");
       // const token = await AsyncStorage.getItem('@token', user.access_token);
-       const userLogin = await AsyncStorage.getItem('@user', JSON.stringify(user));
-  
-       console.log("u", userLogin);
-      if(userLogin) {
-        setUser(userLogin)
-      }
-      setUser({})
+      const userLogin = await AsyncStorage.getItem(
+        '@user',
+        JSON.stringify(user),
+      );
 
+      if (userLogin) {
+        setUser(userLogin);
+      }
+      setUser({});
     } catch (e) {
       console.log('Errrrr', e);
     }
   };
 
   useEffect(() => {
-    authUser
-    console.log("auth", user);
+    authUser;
+    console.log('auth', user);
   }, [authUser]);
-
-
 
   return (
     <>
