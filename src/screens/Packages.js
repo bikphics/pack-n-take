@@ -24,7 +24,12 @@ const Packages = ({packageData, fetchPackages, navigation}) => {
       priceTag
       corner
       cardStyle={{width: width - 20}}
-      onPress={() => navigation.push('ProductDetailed', {hideBuyNow: true})}
+      onPress={() =>
+        navigation.push('ProductDetails', {
+          hideBuyNow: true,
+          itemId: item.PackageID,
+        })
+      }
     />
   );
   if (packagesData.packages.length === 0) {
