@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Image,
   ImageBackground,
@@ -23,6 +23,8 @@ const ProductCard = ({
   logoImg,
   isStoreCard,
   itemDetails,
+  item,
+  route,
 }) => {
   const logoStyle = corner
     ? {justifyContent: 'flex-start', alignItems: 'flex-start', padding: 10}
@@ -31,6 +33,8 @@ const ProductCard = ({
   const cardMargin = isCentered
     ? {marginHorizontal: 12}
     : {marginRight: 25, marginLeft: 5};
+
+  useEffect(() => {}, []);
   return (
     <TouchableOpacity
       style={{...styles.cardStyle, ...cardStyle, ...cardMargin}}
@@ -122,7 +126,8 @@ const styles = StyleSheet.create({
     margin: 0,
     width: width - 80,
     alignSelf: 'center',
-    marginTop: 8,
+    marginTop: 12,
+    marginBottom: 12,
   },
   cardWrapper: {
     width: '100%',

@@ -7,7 +7,13 @@ import {
   REGISTER_ERROR,
   GET_LOGGIN_IN_USER_SUCCESS,
   GET_LOGGIN_IN_USER_REQUEST,
-  GET_LOGGIN_IN_USER_ERROR
+  GET_LOGGIN_IN_USER_ERROR,
+  UPDATE_USER_ERROR,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
+  GET_USER_ERROR,
+  GET_USER_REQUEST,
+  GET_USER_SUCCESS
 } from '../constants';
 
 export const loginUser = (state = {user: {}},action) => {
@@ -66,6 +72,48 @@ export const getLoggedInUser = (state = {user: {}}, action) => {
       return {
         loading: false,
         error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+
+export const updateUser = (state = {updateUser: {}}, action) => {
+  switch (action.type) {
+    case UPDATE_USER_REQUEST:
+      return {loading: true, updateUser: {}};
+
+    case UPDATE_USER_SUCCESS:
+      return {
+        loading: false,
+        updateUser: action.payload,
+      };
+    case UPDATE_USER_ERROR:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+
+export const getUserInData = (state = {user: {}}, action) => {
+  switch (action.type) {
+    case GET_USER_REQUEST:
+      return {loadingUser: true, user: {}};
+
+    case GET_USER_SUCCESS:
+      return {
+        loadingUser: false,
+        user: action.payload,
+      };
+    case GET_USER_ERROR:
+      return {
+        loadingUser: false,
+        errorUser: action.payload,
       };
     default:
       return state;

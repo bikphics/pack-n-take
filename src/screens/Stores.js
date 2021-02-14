@@ -20,7 +20,7 @@ function Store(props) {
     axios
       .get('https://www.packntake.com/api/restaurants', {
         params: {
-          token: loginUser.user.access_token,
+          token: loginUser.access_token,
         },
       })
       .then((response) => {

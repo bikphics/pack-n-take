@@ -49,11 +49,10 @@ const SignIn = (props) => {
 
   const storeData = async () => {
     try {
-      console.log('coming');
+      login();
+      console.log('coming', user);
       await AsyncStorage.setItem('@token', user.access_token);
       await AsyncStorage.setItem('@user', JSON.stringify(user));
-
-      login();
     } catch (e) {
       console.log('Errrrr', e);
     }
@@ -80,11 +79,11 @@ const SignIn = (props) => {
               useremail: '',
               userpassword: '',
             }}
-            onSubmit={async(values) => {
+            onSubmit={async (values) => {
               dispatch(loginUser(values));
 
               console.log('user', user);
-              if (user.UserId) {
+              if (user) {
                 console.log('exits', user.access_token);
                 await storeData();
               }

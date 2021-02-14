@@ -8,6 +8,8 @@ import {
   loginUser,
   registerUser,
   getLoggedInUser,
+  updateUser,
+  getUserInData,
 } from '../redux/reducers/loginReducer';
 
 import {getAllResturants} from '../redux/reducers/restaurantReducer';
@@ -20,6 +22,8 @@ const reducer = combineReducers({
   getLoggedInUser: getLoggedInUser,
   getAllRestaurants: getAllResturants,
   PackagesReducer: PackagesReducer,
+  updateUser: updateUser,
+  getUser: getUserInData,
 });
 
 const getAuthData = async () => {
@@ -58,7 +62,7 @@ const getUser = () => {
 };
 
 const initialState = {
-  loginUser: {user: getUser()},
+  loginUser: getUser(),
 };
 
 const middleware = [thunk];

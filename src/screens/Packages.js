@@ -9,12 +9,12 @@ const Packages = ({packageData, fetchPackages, navigation}) => {
   const loginUser = useSelector((state) => state.loginUser);
   const packagesData = useSelector((state) => state.PackagesReducer);
   useEffect(() => {
-    console.log(loginUser);
-    fetchPackages(loginUser.user.access_token);
+    console.log('LogIn User------>', loginUser);
+    fetchPackages(loginUser.access_token);
   }, []);
 
   const handleLoadMore = () => {
-    fetchPackages(loginUser.user.access_token);
+    fetchPackages(loginUser.access_token);
   };
 
   const renderItem = ({item}) => (

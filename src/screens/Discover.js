@@ -1,6 +1,12 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View, StyleSheet, ActivityIndicator} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  Text,
+} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Title, Button, Appbar} from 'react-native-paper';
 import {DISH_IMG} from '../assets';

@@ -61,10 +61,11 @@ const SignUp = (props) => {
     try {
       console.log("storeData", user);
       console.log('coming');
+      login();
       await AsyncStorage.setItem('@token', user.access_token);
       await AsyncStorage.setItem('@user', JSON.stringify(user));
 
-      login();
+     
     } catch (e) {
       console.log('Errrrr', e);
     }

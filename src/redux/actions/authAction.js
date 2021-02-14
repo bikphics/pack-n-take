@@ -7,7 +7,13 @@ import {
   REGISTER_ERROR,
   GET_LOGGIN_IN_USER_SUCCESS,
   GET_LOGGIN_IN_USER_REQUEST,
-  GET_LOGGIN_IN_USER_ERROR
+  GET_LOGGIN_IN_USER_ERROR,  
+  UPDATE_USER_ERROR,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
+  GET_USER_ERROR,
+  GET_USER_REQUEST,
+  GET_USER_SUCCESS
 } from '../constants';
 
 import axios from 'axios';
@@ -79,7 +85,51 @@ export const getLoggedInUser = () => async (dispatch) => {
 }
 
 
+export const updateUserAction = (userData, token) => async (dispatch) => {
+  try {
+    dispatch({type: UPDATE_USER_REQUEST});
+    const {data} = await axios.put(
+      `https://www.packntake.com/api/auth/updateuserinfo?token=${token}`,
+      userData,
+    );
+    console.log('Data===', data);
+    if (data) {
+      dispatch({type: UPDATE_USER_SUCCESS, payload: data});
+    }
+  } catch (error) {
+    console.log('Error===', error.response);
+    dispatch({
+      type: UPDATE_USER_ERROR,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
+
+export const getUserAction = (token) => async (dispatch) => {
+  try {
+    dispatch({type: GET_USER_REQUEST});
+    const {data} = await axios.post(
+      `https://www.packntake.com/api/auth/me?token=${token}`,
+    );
+    console.log('Data===', data.data);
+    if (data) {
+      dispatch({type: GET_USER_SUCCESS, payload: data.data});
+    }
+  } catch (error) {
+    console.log('Error===', error.response);
+    dispatch({
+      type: GET_USER_ERROR,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 // export const dispatchAction = (type, payload) => async (dispatch) => {
 //   try {
 //     console.log('type', `${type}_REQUEST`);
