@@ -81,9 +81,9 @@ const EditProfile = (props) => {
               <Formik
                 validationSchema={signInValidationSchema}
                 initialValues={{
-                  useremail: user.UserEmail,
-                  username: user.UserName,
-                  usernumber: user.UserMobile && user.UserMobile
+                  useremail: user && user.UserEmail,
+                  username: user && user.UserName,
+                  usernumber: user && user.UserMobile && user.UserMobile
                 }}
                 onSubmit={async (values) => {
                   setClick(true)

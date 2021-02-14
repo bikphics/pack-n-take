@@ -13,7 +13,10 @@ import {
   UPDATE_USER_SUCCESS,
   GET_USER_ERROR,
   GET_USER_REQUEST,
-  GET_USER_SUCCESS
+  GET_USER_SUCCESS,
+  CHANGE_PASSWORD_USER_ERROR,
+  CHANGE_PASSWORD_USER_REQUEST,
+  CHANGE_PASSWORD_USER_SUCCESS
 } from '../constants';
 
 export const loginUser = (state = {user: {}},action) => {
@@ -99,6 +102,25 @@ export const updateUser = (state = {updateUser: {}}, action) => {
   }
 };
 
+export const changeUserPassword = (state = {changeUser: {}}, action) => {
+  switch (action.type) {
+    case CHANGE_PASSWORD_USER_REQUEST:
+      return {loadingChangePassword: true, changeUser: {}};
+
+    case CHANGE_PASSWORD_USER_SUCCESS:
+      return {
+        loadingChangePassword: false,
+        changeUser: action.payload,
+      };
+    case CHANGE_PASSWORD_USER_ERROR:
+      return {
+        loadingChangePassword: false,
+        errorChangePassword: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 export const getUserInData = (state = {user: {}}, action) => {
   switch (action.type) {

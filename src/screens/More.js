@@ -22,8 +22,9 @@ const More = (props) => {
   async function handleLogout() {
     try {
       console.log("coming");
-      logout();
+      
       await AsyncStorage.removeItem('@user')
+      logout()
      
     } catch(err) {
       console.log(err);

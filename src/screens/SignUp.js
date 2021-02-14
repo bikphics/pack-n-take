@@ -98,11 +98,13 @@ const SignUp = (props) => {
             onSubmit={async(values) => {
               console.log('values', values);
               dispatch(registerUser(values));
+              if(!loading) {
 
               console.log('user', user);
               if (user.UserId) {
                 console.log('exits', user.access_token);
                 await storeData();
+              }
               }
             }}>
             {({handleSubmit, isValid, values}) => (
