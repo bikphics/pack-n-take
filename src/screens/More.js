@@ -1,5 +1,12 @@
 import React from 'react';
-import {ScrollView, View, SafeAreaView, Image} from 'react-native';
+import {
+  ScrollView,
+  View,
+  SafeAreaView,
+  Image,
+  NativeModules,
+  DevSettings,
+} from 'react-native';
 import {List} from 'react-native-paper';
 import {Header} from '../components';
 import {useAppContext} from '../config/AppContext';
@@ -15,17 +22,15 @@ import {
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-
 const More = (props) => {
   const {logout, handelExit} = useAppContext();
 
   async function handleLogout() {
     try {
-      console.log("coming");
+      await AsyncStorage.removeItem('@user');
       logout();
-      await AsyncStorage.removeItem('@user')
-     
-    } catch(err) {
+      DevSettings.reload();
+    } catch (err) {
       console.log(err);
     }
   }

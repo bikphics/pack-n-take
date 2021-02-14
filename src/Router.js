@@ -17,11 +17,9 @@ const Router = () => {
     try {
       // const token = await AsyncStorage.getItem('@token', user.access_token);
       const user = await AsyncStorage.getItem('@user', JSON.stringify(user));
-
       if (user.UserId) {
         return user;
       }
-
       return null;
     } catch (e) {
       console.log('Errrrr', e);
@@ -29,17 +27,8 @@ const Router = () => {
   };
 
   useEffect(() => {
-    AsyncStorage.getItem('@user')
-      .then((user) => {
-        setUserLoggedIn(user);
-      })
-      .catch(
-        (err) => {
-          console.log(error);
-        },
-        [userLoggedIn],
-      );
-  });
+    console.log(loading, user);
+  }, [user]);
 
   return (
     <AnimatedSplash
@@ -54,7 +43,7 @@ const Router = () => {
           backgroundColor={PT_COLORS.secondaryBlack}
           barStyle="light-content"
         />
-        {userLoggedIn ? <PrivateRoute /> : <PublicRoute />}
+        {user ? <PrivateRoute /> : <PublicRoute />}
       </NavigationContainer>
     </AnimatedSplash>
   );

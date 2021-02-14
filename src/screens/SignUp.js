@@ -15,7 +15,7 @@ import {useAppContext} from '../config/AppContext';
 import {Formik, Field} from 'formik';
 
 import * as yup from 'yup';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector, connect} from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import {registerUser} from '../redux/actions/authAction';
@@ -47,25 +47,22 @@ const signUpValidationSchema = yup.object().shape({
   //   .required('Confirm password is required'),
 });
 
-const SignUp = (props) => {
-  const {login} = useAppContext();
+const SignUp = ({navigation, registerUserData, registerUser}) => {
+  const {register} = useAppContext();
   const dispatch = useDispatch();
 
   const userRegister = useSelector((state) => state.registerUser);
   const {loading, error, user} = userRegister;
   useEffect(() => {
-    console.log('userRegister===', userRegister);
+    userRegister.user.access_token && storeData();
   }, [userRegister]);
 
   const storeData = async () => {
     try {
-      console.log("storeData", user);
-      console.log('coming');
-      login();
+      console.log('storeData', user);
+      register(user);
       await AsyncStorage.setItem('@token', user.access_token);
       await AsyncStorage.setItem('@user', JSON.stringify(user));
-
-     
     } catch (e) {
       console.log('Errrrr', e);
     }
@@ -95,15 +92,9 @@ const SignUp = (props) => {
               userpassword: '',
               country: '',
             }}
-            onSubmit={async(values) => {
+            onSubmit={async (values) => {
               console.log('values', values);
-              dispatch(registerUser(values));
-
-              console.log('user', user);
-              if (user.UserId) {
-                console.log('exits', user.access_token);
-                await storeData();
-              }
+              registerUser(values);
             }}>
             {({handleSubmit, isValid, values}) => (
               <>
@@ -171,7 +162,7 @@ const SignUp = (props) => {
           <View style={styles.wrapper}>
             <PTButton
               style={styles.signupBtn}
-              onPress={login}
+              onPress={register}
               title="Create An Account"
               buttonBackgroundColor="#333"
               buttonTextColor="#fff"
@@ -195,7 +186,7 @@ const SignUp = (props) => {
               <Text>Already Have An Account?</Text>
               <TouchableOpacity
                 onPress={() => {
-                  props.navigation.navigate('SignIn');
+                  navigation.navigate('SignIn');
                 }}>
                 <Text>Sign In</Text>
               </TouchableOpacity>
@@ -207,7 +198,19 @@ const SignUp = (props) => {
   );
 };
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  return {
+    registerUserData: state.registerUser,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    registerUser: (userData) => dispatch(registerUser(userData)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
 const styles = StyleSheet.create({
   container: {

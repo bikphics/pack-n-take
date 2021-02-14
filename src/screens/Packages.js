@@ -4,17 +4,19 @@ import {width} from '../config/Style';
 import StoreProductCard from '../components/PT/StoreProductCard';
 import {fetchPackages} from '../redux/actions/PackagesAction';
 import {useSelector, connect, useDispatch} from 'react-redux';
+import {useAppContext} from '../config/AppContext';
 
 const Packages = ({packageData, fetchPackages, navigation}) => {
   const loginUser = useSelector((state) => state.loginUser);
   const packagesData = useSelector((state) => state.PackagesReducer);
+  const {user, loading} = useAppContext();
   useEffect(() => {
-    console.log('LogIn User------>', loginUser);
-    fetchPackages(loginUser.access_token);
-  }, []);
+    console.log('LogIn User------>', user);
+    user?.hasOwnProperty('access_token') && fetchPackages(user.access_token);
+  }, [user]);
 
   const handleLoadMore = () => {
-    fetchPackages(loginUser.access_token);
+    fetchPackages(user.access_token);
   };
 
   const renderItem = ({item}) => (

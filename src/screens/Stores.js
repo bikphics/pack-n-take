@@ -5,22 +5,24 @@ import {useSelector} from 'react-redux';
 import axios from 'axios';
 import ResturantsCard from '../components/PT/ResturantsCard';
 import Loader from '../components/PT/Loader';
+import {useAppContext} from '../config/AppContext';
 
 function Store(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [resturantsData, setResturantsData] = useState([]);
+  const {user, loading} = useAppContext();
 
   const loginUser = useSelector((state) => state.loginUser);
   useEffect(() => {
     setIsLoading(true);
-    getResturants();
-  }, []);
+    user?.hasOwnProperty('access_token') && getResturants();
+  }, [user]);
 
   const getResturants = () => {
     axios
       .get('https://www.packntake.com/api/restaurants', {
         params: {
-          token: loginUser.access_token,
+          token: user.access_token,
         },
       })
       .then((response) => {

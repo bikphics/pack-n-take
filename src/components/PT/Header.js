@@ -10,7 +10,9 @@ const Header = (props) => {
           style={styles.headerLeft}>
           {props.left && props.left.icon}
         </TouchableOpacity>
-        <View style={styles.headerContentWrap}>
+        <TouchableOpacity
+          style={styles.headerContentWrap}
+          onPress={props?.map?.onPress}>
           <View style={styles.headerContent}>
             {!props.hideIcons && (
               <Ionicons name="location-outline" color="#fff" size={16} />
@@ -25,7 +27,7 @@ const Header = (props) => {
               <Text style={styles.locationRange}>With In 3 Km</Text>
             )}
           </View>
-        </View>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => props.right && props.right.onPress()}
           style={styles.headerRight}>

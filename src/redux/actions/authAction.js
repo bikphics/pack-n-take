@@ -7,13 +7,13 @@ import {
   REGISTER_ERROR,
   GET_LOGGIN_IN_USER_SUCCESS,
   GET_LOGGIN_IN_USER_REQUEST,
-  GET_LOGGIN_IN_USER_ERROR,  
+  GET_LOGGIN_IN_USER_ERROR,
   UPDATE_USER_ERROR,
   UPDATE_USER_REQUEST,
   UPDATE_USER_SUCCESS,
   GET_USER_ERROR,
   GET_USER_REQUEST,
-  GET_USER_SUCCESS
+  GET_USER_SUCCESS,
 } from '../constants';
 
 import axios from 'axios';
@@ -63,11 +63,10 @@ export const registerUser = (userData) => async (dispatch) => {
   }
 };
 
-
 export const getLoggedInUser = () => async (dispatch) => {
   try {
     dispatch({type: GET_LOGGIN_IN_USER_REQUEST});
-    
+
     const user = await AsyncStorage.getItem('@user');
     if (user) {
       dispatch({type: GET_LOGGIN_IN_USER_SUCCESS, payload: user});
@@ -82,8 +81,7 @@ export const getLoggedInUser = () => async (dispatch) => {
           : error.message,
     });
   }
-}
-
+};
 
 export const updateUserAction = (userData, token) => async (dispatch) => {
   try {
@@ -107,7 +105,6 @@ export const updateUserAction = (userData, token) => async (dispatch) => {
     });
   }
 };
-
 
 export const getUserAction = (token) => async (dispatch) => {
   try {

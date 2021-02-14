@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-community/async-storage';
 import React, {useContext, useEffect, useReducer, useState} from 'react';
 import {Alert, BackHandler, Linking, Platform, Share} from 'react-native';
 
@@ -59,21 +60,33 @@ export const AuthProvider = ({children}) => {
     Linking.openURL(phoneNumber);
   };
 
-  const login = () => {
-    setUserDetails({type: 'setNewUser', payload: {uid: 'uid'}});
+  const login = (user) => {
+    AsyncStorage.setItem('user', JSON.stringify(user));
+    setUserDetails({type: 'setOldUser', payload: user});
   };
-  const register = () => {
-    setUserDetails({type: 'setOldUser', payload: {uid: 'uid'}});
+  const update = (user) => {
+    AsyncStorage.setItem('user', JSON.stringify(user));
+    setUserDetails({type: 'setOldUser', payload: user});
+  };
+  const register = (user) => {
+    AsyncStorage.setItem('user', JSON.stringify(user));
+    setUserDetails({type: 'setNewUser', payload: user});
   };
   const logout = () => {
+    AsyncStorage.removeItem('user');
     setUserDetails({type: 'logout'});
   };
   const forgetPassword = () => {};
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(true);
-    }, 4000);
+    AsyncStorage.getItem('user').then((user) => {
+      if (user) {
+        const userObj = JSON.parse(user);
+        setUserDetails({type: 'setOldUser', payload: userObj});
+      }
+    });
+
+    setLoading(true);
   }, []);
 
   // Context Data That Need In Application
@@ -87,6 +100,7 @@ export const AuthProvider = ({children}) => {
     logout,
     forgetPassword,
     register,
+    update,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

@@ -17,32 +17,19 @@ import {useStore} from 'react-redux';
 import {useDispatch, useSelector} from 'react-redux';
 import Loader from '../components/PT/Loader';
 import AsyncStorage from '@react-native-community/async-storage';
+import {useAppContext} from '../config/AppContext';
+import Map from './Map';
 const Discover = (props) => {
   const [discoverData, setDiscoverData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [tokenData, setTokenData] = useState(null);
-  const store = useStore();
-  const user = store.getState().loginUser;
-  const loginUser = useSelector((state) => state.loginUser);
-  const URL = 'https://www.packntake.com/api';
+  const {user} = useAppContext();
 
   useEffect(() => {
-    getUserData();
-  }, []);
-
-  const getUserData = () => {
-    AsyncStorage.getItem('@user').then((userData) => {
-      console.log('User Data', JSON.parse(userData));
-      setTokenData(JSON.parse(userData));
-    });
-  };
-  useEffect(() => {
-    tokenData?.hasOwnProperty('access_token') &&
-      getResturantsData(tokenData.access_token);
-  }, [tokenData]);
+    user?.hasOwnProperty('access_token') &&
+      getResturantsData(user.access_token);
+  }, [user]);
 
   const getResturantsData = (token) => {
-    console.log('Token =================', token);
     axios
       .get('https://www.packntake.com/api/discover', {
         params: {
@@ -60,7 +47,15 @@ const Discover = (props) => {
 
   return (
     <>
-      <Header title="Khalidya, Abu Dhabi" />
+      <Header
+        title="Khalidya, Abu Dhabi"
+        map={{
+          onPress: () => {
+            console.log('object');
+            props.navigation.push('Map', '');
+          },
+        }}
+      />
       <SafeAreaView style={{flex: 1}}>
         {discoverData.length === 0 ? (
           <Loader />

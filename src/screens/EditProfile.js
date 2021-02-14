@@ -11,6 +11,7 @@ import {Formik, Field} from 'formik';
 import * as yup from 'yup';
 import {useDispatch, useSelector} from 'react-redux';
 import {updateUserAction, getUserAction} from '../redux/actions/authAction';
+import {useAppContext} from '../config/AppContext';
 
 const signInValidationSchema = yup.object().shape({
   useremail: yup
@@ -25,6 +26,7 @@ const EditProfile = (props) => {
   const [click, setClick] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {user} = useAppContext();
 
   const dispatch = useDispatch();
   // Select getLoggedInUser state
@@ -33,18 +35,18 @@ const EditProfile = (props) => {
   const {loading, error, updateUser} = resultData;
 
   const resultUser = useSelector((state) => state.getUser);
-  const {loadingUser, errorUser, user} = resultUser;
+  const {loadingUser, errorUser} = resultUser;
 
   const store = useStore();
   const userData = store.getState().loginUser;
 
   useEffect(() => {
-    dispatch(getUserAction(userData.access_token));
+    dispatch(getUserAction(user.access_token));
 
     if (!loadingUser) {
       console.log('user-----profile', user);
     }
-  }, [userData]);
+  }, [user]);
 
   return (
     <>
@@ -108,14 +110,12 @@ const EditProfile = (props) => {
                         keyboardType="email-address"
                         label="Email"
                       />
-
                       <Field
                         component={PTTextInputS}
                         name="usernumber"
                         label="UserMobile"
                         keyboardType="number-pad"
                       />
-
                       {/* opacity={isValid ? 0.2 : 1} */}
                       <View style={styles.wrapper}>
                         <Button

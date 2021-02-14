@@ -24,6 +24,7 @@ import ProductDetailed from './screens/ProductDetailed';
 import PastOrderReviewDetails from './screens/PastOrderReviewDetail';
 import {BROWSE, DISCOVER, FAVOURITES, MORE} from './assets';
 import {Image} from 'react-native';
+import Map from './screens/Map';
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -34,6 +35,7 @@ const PrivateRoute = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="MainApp" component={MYTabs} />
+      <Stack.Screen name="Map" component={Map} />
       <Stack.Screen name="CategoryDetails" component={CategoryDetails} />
       <Stack.Screen name="ProductDetails" component={ProductDetails} />
       <Stack.Screen name="ProductDetailed" component={ProductDetailed} />
