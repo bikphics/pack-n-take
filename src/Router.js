@@ -33,15 +33,12 @@ const Router = () => {
 
   useEffect(() => {
     AsyncStorage.getItem('@user').then(user => {
-      console.log(user);
       setUserLoggedIn(user)
+
+      console.log("userLoggedIn", userLoggedIn);
     }).catch(err => {
       console.log(error);
     }, [userLoggedIn])
-
-
-
-    console.log("userLoggedIn", userLoggedIn);
   })
 
   return (

@@ -1,131 +1,106 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View, StyleSheet, ActivityIndicator} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  Text,
+} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Title, Button, Appbar} from 'react-native-paper';
 import {DISH_IMG} from '../assets';
 import {Header, ProductCard} from '../components';
 import {PT_COLORS} from '../config';
-import AsyncStorage from '@react-native-community/async-storage';
-import {getLoggedInUser} from '../redux/actions/authAction';
 
-import {getAllResturants} from '../redux/actions/restaurantAction';
-import { useStore } from 'react-redux'
+import {getAllDiscoverDataAction} from '../redux/actions/discoverAction';
+import {useStore} from 'react-redux';
 
 import {useDispatch, useSelector} from 'react-redux';
 const Discover = (props) => {
-  const [items, setItems] = useState([]);
-  const [userLoggedIn, setUserLoggedIn] = useState({});
-
   const dispatch = useDispatch();
   // Select getLoggedInUser state
-  const resultRestaturants = useSelector((state) => state.getAllRestaurants);
+
+  // const user = store.getState().loginUser;
+  const user = useSelector((state) => state.loginUser);
+  
+  const resultDiscover = useSelector((state) => state.getAllDicover);
   const store = useStore();
-  const user = store.getState().loginUser;
-  const loginUser = useSelector((state) => state.loginUser);
-  console.log("loginUser",user);
-  const {loading, error, restaurants} = resultRestaturants;
-  const URL = "https://www.packntake.com/api";
+
+  const {loading, error, dicoverDatas} = resultDiscover;
 
   useEffect(() => {
-    console.log("called");
-    AsyncStorage.getItem('@user')
-      .then((user) => {
-        setUserLoggedIn(JSON.parse(user));
-        console.log("discobver", userLoggedIn);
-        fetchData();
-      })
-      .catch((err) => {
-        console.log(error);
-      });
-
-    console.log('resultRestaturants', resultRestaturants);
-
-
-    if(!loading) {
-    console.log('restaurants', restaurants);
+    if(user.access_token){
+    console.log("access_token", user.access_token);
+      dispatch(getAllDiscoverDataAction(user.access_token));
     }
-  }, []);
+    console.log('user', user);
+    if (!loading) {
+      console.log('dicoverDatas', dicoverDatas);
+    }
+  }, [user.access_token]);
 
-  const fetchData = async () => {
-    console.log(userLoggedIn);
-    dispatch(getAllResturants(userLoggedIn.access_token));
 
-  };
-
-  const fetchDiscoverData = (access_token) => {
-    axios.get(`${URL}/discover`, {
-      params: {
-        token: access_token
-      }
-    })
-    .then( (response) => {
-      console.log("Response Datassss",response.data);
-    })
-  
-  }
- 
 
   return (
     <>
       <Header title="Khalidya, Abu Dhabi" />
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1}}>
-          {/* {items.length > 0 ? ( */}
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                margin: 5,
-              }}>
-              <Title>Near by</Title>
-              <Button
-                labelStyle={{fontSize: 12}}
-                onPress={() =>
-                  props.navigation.push('CategoryDetails', 'Near By')
-                }
-                color={PT_COLORS.primaryBlack}>
-                {'More >'}
-              </Button>
-            </View>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              {/* {items.map((item, index) => (
-                  <ProductCard
-                    key={item.RestaurantSlug}
-                    productImg={{uri: item.RestaurantImage}}
-                    restaurantName={item.RetaurantName}
-                    logoImg={{uri: item.RetaurantLogo}}
-                  />
-                ))} */}
-              <ProductCard
+          {dicoverDatas && dicoverDatas.length > 0 ? (
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <ScrollView showsHorizontalScrollIndicator={false}>
+                {dicoverDatas.map((item_data, index) => (
+                  <View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        margin: 5,
+                      }}>
+                      <Title>{item_data.TagName}</Title>
+                      <Button
+                        labelStyle={{fontSize: 12}}
+                        onPress={() =>
+                          props.navigation.push('CategoryDetails', 'Near By')
+                        }
+                        color={PT_COLORS.primaryBlack}>
+                        {'More >'}
+                      </Button>
+                    </View>
+                    <ScrollView
+                      horizontal
+                      showsHorizontalScrollIndicator={false}>
+                      {item_data['Packages'].map((item, index) => {
+                        console.log(index, item.RetaurantName);
+                        return (
+                          <ProductCard
+                            key={item.RestaurantSlug}
+                            productImg={{uri: item.PackageImage}}
+                            restaurantName={item.RetaurantName}
+                            logoImg={{uri: item.RetaurantLogo}}
+                            item={item}
+                            onPress={() =>
+                              props.navigation.navigate('ProductDetails', {"item_data": item_data})
+                            }
+                          />
+                        );
+                      })}
+                    </ScrollView>
+                  </View>
+                ))}
+                {/* <ProductCard
                 corner
                 onPress={() =>
                   props.navigation.push('ProductDetails', 'Product Details')
                 }
               />
               <ProductCard corner />
-              <ProductCard corner />
-            </ScrollView>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                margin: 5,
-              }}>
-              <Title>Meals</Title>
-              <Button
-                labelStyle={{fontSize: 12}}
-                onPress={() =>
-                  props.navigation.push('CategoryDetails', 'Meals')
-                }
-                color={PT_COLORS.primaryBlack}>
-                {'More >'}
-              </Button>
-            </View>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <ProductCard corner /> */}
+              </ScrollView>
+
+              {/* <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <ProductCard corner productImg={DISH_IMG} />
               <ProductCard corner productImg={DISH_IMG} />
               <ProductCard corner productImg={DISH_IMG} />
@@ -151,8 +126,13 @@ const Discover = (props) => {
               <ProductCard corner />
               <ProductCard corner />
               <ProductCard corner />
+            </ScrollView> */}
             </ScrollView>
-          </ScrollView>
+          ) : (
+            <View style={styles.activityIndicatorWrapper}>
+              <ActivityIndicator size="large" color={PT_COLORS.primaryBlack} />
+            </View>
+          )}
         </View>
       </SafeAreaView>
     </>

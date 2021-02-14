@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Image,
   ImageBackground,
@@ -22,6 +22,8 @@ const ProductCard = ({
   restaurantName,
   logoImg,
   isStoreCard,
+  item,
+  route
 }) => {
   const logoStyle = corner
     ? {justifyContent: 'flex-start', alignItems: 'flex-start', padding: 10}
@@ -30,6 +32,10 @@ const ProductCard = ({
   const cardMargin = isCentered
     ? {marginHorizontal: 12}
     : {marginRight: 25, marginLeft: 5};
+
+
+    useEffect(() => {
+    }, [])
   return (
     <TouchableOpacity
       style={{...styles.cardStyle, ...cardStyle, ...cardMargin}}
@@ -72,45 +78,30 @@ const ProductCard = ({
                         Steak
                       </Text>
                     </View>
-                    <View
+                    {
+                      item && item.InsideThePackge.map((item, index) => {
+                  return <View
+                  key={Math.floor(Math.random() * 100000) + 1}
                       style={{
                         padding: 5,
-                        backgroundColor: '#F4AB2E',
+                        backgroundColor: item.color,
                         marginRight: 10,
                         borderRadius: 5,
                       }}>
                       <Text style={{color: '#e9ecef', fontSize: 11}}>
-                        Steak
+                        {item.name}
                       </Text>
                     </View>
-                    <View
-                      style={{
-                        padding: 5,
-                        backgroundColor: '#56733C',
-                        marginRight: 10,
-                        borderRadius: 5,
-                      }}>
-                      <Text style={{color: '#e9ecef', fontSize: 11}}>
-                        Steak
-                      </Text>
-                    </View>
-                    <View
-                      style={{
-                        padding: 5,
-                        backgroundColor: '#56733C',
-                        marginRight: 10,
-                        borderRadius: 5,
-                      }}>
-                      <Text style={{color: '#e9ecef', fontSize: 11}}>
-                        Steak
-                      </Text>
-                    </View>
+                      })
+                    }
+                    
+                    
                   </View>
-                  <Text style={styles.noteStyle}>Collect directly-250m</Text>
+                  <Text style={styles.noteStyle}>Collect directly-{item && item.RetaurantDistance}</Text>
                 </View>
                 <View style={styles.btnWrapper}>
                   <View style={styles.itemLeftBtn}>
-                    <Text style={styles.itemLeftBtnText}>5+ Left</Text>
+                    <Text style={styles.itemLeftBtnText}>{item && item.PackageQuantity} Left</Text>
                   </View>
                   {!priceTag && (
                     <View style={styles.priceBtn}>
@@ -118,7 +109,7 @@ const ProductCard = ({
                         <Text style={styles.priceBtnSubtitle}>AED 40.00</Text>
                       </View>
                       <View>
-                        <Text style={styles.priceBtnTitle}>AED 20.00</Text>
+                        <Text style={styles.priceBtnTitle}>AED {item && item.PackageSPrice}</Text>
                       </View>
                     </View>
                   )}
@@ -172,7 +163,8 @@ const styles = StyleSheet.create({
     margin: 0,
     width: width - 80,
     alignSelf: 'center',
-    marginTop: 8,
+    marginTop: 12,
+    marginBottom: 12
   },
   cardWrapper: {
     width: '100%',

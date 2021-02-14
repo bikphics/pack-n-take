@@ -8,9 +8,14 @@ import {
   loginUser,
   registerUser,
   getLoggedInUser,
+  updateUser,
+  getUserInData
 } from '../redux/reducers/loginReducer';
 
 import {getAllResturants} from '../redux/reducers/restaurantReducer';
+import {getAllDicoverData} from '../redux/reducers/discoverReducer';
+
+
 const user = {};
 
 const reducer = combineReducers({
@@ -18,6 +23,9 @@ const reducer = combineReducers({
   registerUser: registerUser,
   getLoggedInUser: getLoggedInUser,
   getAllRestaurants: getAllResturants,
+  getAllDicover: getAllDicoverData,
+  updateUser: updateUser,
+  getUser: getUserInData
 });
 
 const getAuthData = async () => {
@@ -55,13 +63,13 @@ const getUser = () => {
   var user = {};
   AsyncStorage.getItem('@user').then((res) => {
     console.log(1111111111, res);
-    Object.assign(user, JSON.parse(res));
+    Object.assign(user, JSON.parse(res))
   });
   return user;
 };
 
 const initialState = {
-  loginUser: {user: getUser()},
+  loginUser: getUser(),
 };
 
 const middleware = [thunk];
