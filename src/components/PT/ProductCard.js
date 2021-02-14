@@ -64,6 +64,7 @@ const ProductCard = ({
                 <View style={{flexDirection: 'row', marginTop: 5}}>
                   {itemDetails.InsideThePackge.map((product, index) => (
                     <View
+                      key={index}
                       style={{
                         padding: 5,
                         backgroundColor: '#AD4132',

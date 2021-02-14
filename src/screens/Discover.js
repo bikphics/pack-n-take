@@ -10,24 +10,37 @@ import {useStore} from 'react-redux';
 
 import {useDispatch, useSelector} from 'react-redux';
 import Loader from '../components/PT/Loader';
+import AsyncStorage from '@react-native-community/async-storage';
 const Discover = (props) => {
   const [discoverData, setDiscoverData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [tokenData, setTokenData] = useState(null);
   const store = useStore();
   const user = store.getState().loginUser;
   const loginUser = useSelector((state) => state.loginUser);
   const URL = 'https://www.packntake.com/api';
 
   useEffect(() => {
-    setIsLoading(true);
-    getResturantsData();
-  }, [loginUser]);
+    getUserData();
+  }, []);
 
-  const getResturantsData = () => {
+  const getUserData = () => {
+    AsyncStorage.getItem('@user').then((userData) => {
+      console.log('User Data', JSON.parse(userData));
+      setTokenData(JSON.parse(userData));
+    });
+  };
+  useEffect(() => {
+    tokenData?.hasOwnProperty('access_token') &&
+      getResturantsData(tokenData.access_token);
+  }, [tokenData]);
+
+  const getResturantsData = (token) => {
+    console.log('Token =================', token);
     axios
       .get('https://www.packntake.com/api/discover', {
         params: {
-          token: loginUser.user.access_token,
+          token: token,
         },
       })
       .then((response) => {
@@ -40,63 +53,55 @@ const Discover = (props) => {
   };
 
   return (
-    console.log(
-      'Discover Data----------------=========================',
-      discoverData,
-    ),
-    (
-      <>
-        <Header title="Khalidya, Abu Dhabi" />
-        <SafeAreaView style={{flex: 1}}>
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <View style={{flex: 1}}>
-              {/* {items.length > 0 ? ( */}
-              <ScrollView showsVerticalScrollIndicator={false}>
-                {discoverData.map((category, index) => (
-                  <View>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        margin: 5,
-                      }}>
-                      <Title>{category.TagName}</Title>
-                      <Button
-                        labelStyle={{fontSize: 12}}
-                        onPress={() =>
-                          props.navigation.push('CategoryDetails', 'Near By')
-                        }
-                        color={PT_COLORS.primaryBlack}>
-                        {'More >'}
-                      </Button>
-                    </View>
-                    <ScrollView
-                      horizontal
-                      showsHorizontalScrollIndicator={false}>
-                      {category.Packages.map((packageItem, index) => (
-                        <ProductCard
-                          key={packageItem.PackageID}
-                          corner
-                          itemDetails={packageItem}
-                          onPress={() =>
-                            props.navigation.push('ProductDetails', {
-                              itemId: packageItem.PackageID,
-                            })
-                          }
-                        />
-                      ))}
-                    </ScrollView>
+    <>
+      <Header title="Khalidya, Abu Dhabi" />
+      <SafeAreaView style={{flex: 1}}>
+        {discoverData.length === 0 ? (
+          <Loader />
+        ) : (
+          <View style={{flex: 1}}>
+            {/* {items.length > 0 ? ( */}
+            <ScrollView showsVerticalScrollIndicator={false}>
+              {discoverData.map((category, index) => (
+                <View key={index}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      margin: 5,
+                    }}>
+                    <Title>{category.TagName}</Title>
+                    <Button
+                      labelStyle={{fontSize: 12}}
+                      onPress={() =>
+                        props.navigation.push('CategoryDetails', 'Near By')
+                      }
+                      color={PT_COLORS.primaryBlack}>
+                      {'More >'}
+                    </Button>
                   </View>
-                ))}
-              </ScrollView>
-            </View>
-          )}
-        </SafeAreaView>
-      </>
-    )
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {category.Packages.map((packageItem, index) => (
+                      <ProductCard
+                        key={packageItem.PackageID}
+                        corner
+                        itemDetails={packageItem}
+                        onPress={() =>
+                          props.navigation.push('ProductDetails', {
+                            itemId: packageItem.PackageID,
+                          })
+                        }
+                      />
+                    ))}
+                  </ScrollView>
+                </View>
+              ))}
+            </ScrollView>
+          </View>
+        )}
+      </SafeAreaView>
+    </>
   );
 };
 
