@@ -14,6 +14,9 @@ import {
   GET_USER_ERROR,
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
+  CHANGE_PASSWORD_USER_ERROR,
+  CHANGE_PASSWORD_USER_REQUEST,
+  CHANGE_PASSWORD_USER_SUCCESS,
 } from '../constants';
 
 import axios from 'axios';
@@ -98,6 +101,29 @@ export const updateUserAction = (userData, token) => async (dispatch) => {
     console.log('Error===', error.response);
     dispatch({
       type: UPDATE_USER_ERROR,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const changePasswordAction = (userData, token) => async (dispatch) => {
+  try {
+    dispatch({type: CHANGE_PASSWORD_USER_REQUEST});
+    const {data} = await axios.put(
+      `https://www.packntake.com/api/auth/updateuserpassword?token=${token}`,
+      userData,
+    );
+    console.log('Data===', data);
+    if (data) {
+      dispatch({type: CHANGE_PASSWORD_USER_SUCCESS, payload: data});
+    }
+  } catch (error) {
+    console.log('Error===', error.response);
+    dispatch({
+      type: CHANGE_PASSWORD_USER_ERROR,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

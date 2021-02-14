@@ -51,7 +51,6 @@ const SignIn = (props) => {
     try {
       login(user);
       console.log('coming', user);
-      await AsyncStorage.setItem('@token', user.access_token);
       await AsyncStorage.setItem('@user', JSON.stringify(user));
     } catch (e) {
       console.log('Errrrr', e);

@@ -10,6 +10,7 @@ import {
   getLoggedInUser,
   updateUser,
   getUserInData,
+  changeUserPassword
 } from '../redux/reducers/loginReducer';
 
 import {getAllResturants} from '../redux/reducers/restaurantReducer';
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   PackagesReducer: PackagesReducer,
   updateUser: updateUser,
   getUser: getUserInData,
+  changeUserPassword: changeUserPassword
 });
 
 const getAuthData = async () => {

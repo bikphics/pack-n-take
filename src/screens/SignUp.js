@@ -94,7 +94,19 @@ const SignUp = ({navigation, registerUserData, registerUser}) => {
             }}
             onSubmit={async (values) => {
               console.log('values', values);
+<<<<<<< HEAD
               registerUser(values);
+=======
+              dispatch(registerUser(values));
+              if(!loading) {
+
+              console.log('user', user);
+              if (user.UserId) {
+                console.log('exits', user.access_token);
+                await storeData();
+              }
+              }
+>>>>>>> 4701f1220de102d4f5ee6a7cf93ddbacf58e4b37
             }}>
             {({handleSubmit, isValid, values}) => (
               <>
